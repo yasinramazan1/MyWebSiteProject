@@ -18,5 +18,11 @@ namespace yasinramazangokWebSiteProject.Controllers
             var categoryValues = categoryManager.getAll();
             return View(categoryValues);
         }
+
+        public PartialViewResult categoryListInBlogDetails()
+        {
+            // Herhangi bir blogtaki sağ tarafta kategorilerin listelenmesi bu metot ile sağlanmaktadır.
+            return PartialView();
+        }
     }
 }

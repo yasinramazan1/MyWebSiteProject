@@ -11,12 +11,20 @@ namespace yasinramazangokWebSiteProject.Controllers
         // GET: About
         public ActionResult Index()
         {
+            // Bu metot ile ana sayfadaki üst menüden ve footer'dan tıklandığında HAKKIMIZDA sayfasının görüntülenmesi sağlanmaktadır!!!
             return View();
         }
 
         public PartialViewResult footer()
         {
             // Footer'ın partial'ı burasıdır.
+            return PartialView();
+        }
+
+        public PartialViewResult meetTheTeam()
+        {
+            // Hakkımızda sayfasındaki takımımızla tanışın bölümünün görüntülenmesi bu metot ile sağlanmaktadır.
+            // Hakkımızda sayfasının index bölümünde yazmadık çünkü buradaki bölümü veri tabanında farklı bir tablodan çektiğimiz için.
             return PartialView();
         }
     }

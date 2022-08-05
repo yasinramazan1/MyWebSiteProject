@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,8 @@ namespace yasinramazangokWebSiteProject.Controllers
     {
         // Bu controller'da projenin ana sayfasının kodları yer almaktadır yani ana index burasıdır.
         // GET: Blog
+
+        BlogManager blogManager = new BlogManager();
         public ActionResult Index()
         {
             return View();
@@ -18,7 +21,9 @@ namespace yasinramazangokWebSiteProject.Controllers
         public PartialViewResult blogList()
         {
             // Blogların ana sayfada listelendiği ana partial burasıdır.
-            return PartialView();
+            // Manager sınıflarında tanımlanan metotlar buradaki metotlar içerisinde çağırılabilir.
+            var blogList = blogManager.getAll();
+            return PartialView(blogList);
         }
 
         public PartialViewResult featuredBlogs()
@@ -38,6 +43,30 @@ namespace yasinramazangokWebSiteProject.Controllers
             return PartialView();
         }
 
+
+
+        public ActionResult blogDetails()
+        {
+            // Bu metodun view'ı Blog'larda olduğu gibi ana index görevi görmektedir. Yani bütün partial'ların toplandığı view'dır.
+            return View();
+        }
+
+        public PartialViewResult blogCover()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult readAllBlog()
+        {
+            // Bir bloğun yazısının hepsini görüntüleme yani bloğu görüntüleme bu metot üzerinde çalışmaktadır.
+            return PartialView();
+        }
+
+        public ActionResult blogByCategory()
+        {
+            // Üst menü ve footer'daki kategorilere tıklandığında o kategorinin bloglarının görüntülenmesi yani kategori detay sayfası bu metot ile sağlanmaktadır. 
+            return View();
+        }
 
 
 

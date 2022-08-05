@@ -128,8 +128,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -340,6 +343,18 @@
     <Content Include="Views\Blog\otherFeaturedBlogs.cshtml" />
     <Content Include="Views\Blog\mailSubscribe.cshtml" />
     <Content Include="Views\About\footer.cshtml" />
+    <Content Include="Views\Blog\blogDetails.cshtml" />
+    <Content Include="Views\Blog\blogCover.cshtml" />
+    <Content Include="Views\Blog\readAllBlog.cshtml" />
+    <Content Include="Views\Comment\blogCommentList.cshtml" />
+    <Content Include="Views\Comment\leaveComment.cshtml" />
+    <Content Include="Views\Author\authorAbout.cshtml" />
+    <Content Include="Views\Author\authorPopularBlogs.cshtml" />
+    <Content Include="Views\Category\categoryListInBlogDetails.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\meetTheTeam.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Blog\blogByCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

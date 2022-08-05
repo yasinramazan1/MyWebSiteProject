@@ -1,0 +1,15 @@
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\EntityFramework.dll
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\EntityLayer.dll
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\EntityLayer.pdb
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\EntityLayer.dll.config
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\EntityFramework.xml
+D:\yasinramazangokWebSite\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

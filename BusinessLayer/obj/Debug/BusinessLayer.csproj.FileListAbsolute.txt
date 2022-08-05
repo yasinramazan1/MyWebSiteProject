@@ -1,0 +1,15 @@
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\yasinramazangokWebSite\BusinessLayer\obj\Debug\BusinessLayer.csproj.AssemblyReference.cache
+D:\yasinramazangokWebSite\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\yasinramazangokWebSite\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\yasinramazangokWebSite\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\DataAccessLayer.dll
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\EntityLayer.dll
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\EntityFramework.dll
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\EntityLayer.pdb
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\EntityLayer.dll.config
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\EntityFramework.xml
+D:\yasinramazangokWebSite\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete

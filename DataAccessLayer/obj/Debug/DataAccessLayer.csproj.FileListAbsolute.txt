@@ -13,3 +13,5 @@ D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreC
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.mig1.resources
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.cache

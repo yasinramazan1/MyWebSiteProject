@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Concrete;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +22,12 @@ namespace yasinramazangokWebSiteProject.Controllers
             return View();
         }
 
-        public PartialViewResult blogList()
+        public PartialViewResult blogList(int page = 1)
         {
             // Blogların ana sayfada listelendiği ana partial burasıdır.
             // Manager sınıflarında tanımlanan metotlar buradaki metotlar içerisinde çağırılabilir.
-            var blogList = blogManager.getAll();
+            // PagedList ve PagedList.Mvc kütüphaneleri listeleme işlemine yardımcı olan kütüphanelerdir.
+            var blogList = blogManager.getAll().ToPagedList(page, 6); // Toplam veriyi ikinci parametreye böler ve sayfalar oluşur ve ilk parametre kaçıncı sayfadan başlayacağını bildirir. İkinci parametre ise bir sayfada kaç tane veri listeleneceğini bildirir.
             return PartialView(blogList);
         }
 
@@ -78,11 +81,11 @@ namespace yasinramazangokWebSiteProject.Controllers
             return PartialView();
         }
 
-        public PartialViewResult mailSubscribe()
-        {
-            // Footer'ın hemen üzerinde mail aboneliğinin partial'ı burasıdır.
-            return PartialView();
-        }
+        //public PartialViewResult mailSubscribe()
+        //{
+        //    // Footer'ın hemen üzerinde mail aboneliğinin partial'ı burasıdır.
+        //    return PartialView();
+        //}
 
 
 
@@ -92,15 +95,18 @@ namespace yasinramazangokWebSiteProject.Controllers
             return View();
         }
 
-        public PartialViewResult blogCover()
+        public PartialViewResult blogCover(int id)
         {
-            return PartialView();
+            var blogDetailsList = blogManager.getBlogById(id);
+            return PartialView(blogDetailsList);
         }
 
-        public PartialViewResult readAllBlog()
+        public PartialViewResult readAllBlog(int id)
         {
             // Bir bloğun yazısının hepsini görüntüleme yani bloğu görüntüleme bu metot üzerinde çalışmaktadır.
-            return PartialView();
+            // var blogDetailsList = blogManager.blogById(id); // Expression Delegate kullanmadan önceki metot budur.
+            var blogDetailsList = blogManager.getBlogById(id);
+            return PartialView(blogDetailsList);
         }
 
         public ActionResult blogByCategory()

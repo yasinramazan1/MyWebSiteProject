@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,7 +19,9 @@ namespace yasinramazangokWebSiteProject.Controllers
         public PartialViewResult footer()
         {
             // Footer'ın partial'ı burasıdır.
-            return PartialView();
+            AboutManager aboutManager = new AboutManager();
+            var aboutContent1 = aboutManager.getAll();
+            return PartialView(aboutContent1);
         }
 
         public PartialViewResult meetTheTeam()

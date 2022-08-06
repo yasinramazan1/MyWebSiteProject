@@ -4,7 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// Projeye yeni bir sınıf eklenirken öncelikle EntityLayer.Concrete, ardından DataAccessLayer.Concrete.Context içerisine tanımlama yapılır ve ardından migration işlemine geçilir. 
+// Ardından BusinessLayer katmanında manager sınıfı ile yeni eklenen özelliklerin tanımı ve kısıtlaması belirlenir.
+// Ardından Controller'da bu özellik veya nesneler için controller tanımlaması ve user interface oluşturulur ve özellik aktif olarak kullanıcıya sunulmaya hazır hale gelir.
 namespace EntityLayer.Concrete
 {
     // public erişim belirleyiciye sahip olması diğer sınıflardan erişim sağlayabilmek içindir.

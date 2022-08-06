@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity; // DbSet sınıfı için gerekli kütüphane
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,6 +46,21 @@ namespace DataAccessLayer.Concrete
         public List<T> list()
         {
             return _object.ToList();
+        }
+
+
+        /*
+        public List<T> listWhere(int id)
+        {
+            // Buradaki metot Generic yapıyı korur çünkü burada generic yapıyı korumasaydık her sınıfıa ait soyut sınıflarda bu metodu ayrı ayrı overrid etmemiz gerekirdi. Generic yapı bunu kolaylaştırdığı için önemlidir!
+            throw new NotImplementedException();
+        }
+         Bu ifadeler expression metodu ile kullanımına gerek kalmamıştır. Yani aslında bu ifadelerin yazımına gerek yoktur, bunun yerine expression ifadeleri kullanıyoruz.
+        */
+
+        public List<T> list(Expression<Func<T, bool>> filter)
+        {
+            return _object.Where(filter).ToList();
         }
 
         public int update(T p)

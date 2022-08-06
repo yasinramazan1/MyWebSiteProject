@@ -1,4 +1,7 @@
 ﻿<!-- Blogların ana sayfada listelendiği partial burasıdır. -->
+@using PagedList
+@using PagedList.Mvc
+
 @model IEnumerable<EntityLayer.Concrete.Blog>
     @{ string color="";}
 <div class="site-section">
@@ -35,7 +38,7 @@
                         <a href="single.html"><img src="@item.image" style="height:250px" alt="Image" class="img-fluid rounded"></a>
                         <div class="excerpt">
                             <span class="@color">@item.category.name</span>
-                            <h2><a href="single.html">@item.title</a></h2>
+                            <h2><a href="/Blog/blogDetails/@item.id">@item.title</a></h2>
                             <div class="post-meta align-items-center text-left clearfix">
                                 <figure class="author-figure mb-0 mr-3 float-left"><img src="/miniblog/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
                                 <span class="d-inline-block mt-1"><a href="#">@item.author.name</a></span>
@@ -50,3 +53,5 @@
         </div>
     </div>
 </div>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))

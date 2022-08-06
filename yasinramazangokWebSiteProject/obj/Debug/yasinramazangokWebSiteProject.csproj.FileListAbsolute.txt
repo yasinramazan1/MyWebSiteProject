@@ -89,3 +89,7 @@ D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\obj\Debug\yasinramazango
 D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\obj\Debug\yasinramazangokWebSiteProject.csproj.CopyComplete
 D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\obj\Debug\yasinramazangokWebSiteProject.dll
 D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\obj\Debug\yasinramazangokWebSiteProject.pdb
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\PagedList.dll
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\PagedList.xml
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\PagedList.Mvc.dll
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\PagedList.Mvc.xml

@@ -31,6 +31,9 @@ namespace DataAccessLayer.Concrete
         public DbSet<Contact> CONTACTS { get; set; }
 
         // "migration" işleminin yapılabilmesi için Package Manager Console'da DataAccessLayer katmanının seçili olması gerekir çünkü Context sınıfı bu katmanda tanımlıdır.
+        // Context sınıfı hangi katmanda ise o katmandan migration işlemi yapılır.
         // "migration" işlemi için öncelikle "enable-migrations"; ardından "update-database" komutu çalıştırılır.
+
+        public DbSet<SubscribeMail> SUBSCRIBEMAILS { get; set; }
     }
 }

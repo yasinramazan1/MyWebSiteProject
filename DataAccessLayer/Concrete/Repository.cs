@@ -67,5 +67,10 @@ namespace DataAccessLayer.Concrete
         {
             return context.SaveChanges();   
         }
+
+        public T find(Expression<Func<T, bool>> where)
+        {
+            return _object.FirstOrDefault(where);
+        }
     }
 }

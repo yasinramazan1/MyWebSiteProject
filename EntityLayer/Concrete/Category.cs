@@ -21,6 +21,9 @@ namespace EntityLayer.Concrete
         [StringLength(50)]
         public string name  { get; set; } // Burada kısıtlama uygulamaz isek veri tabanına nvarchar(max) olarak tanımlanır.
 
+        [StringLength(500)]
+        public string description { get; set; }
+
         // Bir kategoride birden fazla blog olabilir. Bu yüzden bire-çok ilişki tanımlaması yapılır.
         public ICollection<Blog> blogs { get; set; }
     }

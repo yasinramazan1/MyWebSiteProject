@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,16 +10,20 @@ namespace yasinramazangokWebSiteProject.Controllers
     public class AuthorController : Controller
     {
         // GET: Author
-        public PartialViewResult authorAbout()
+        BlogManager blogManager = new BlogManager();
+        public PartialViewResult authorAbout(int id)
         {
             // Bu metot ile blog içerisinde sağ tarafta yazar bilgisini görüntülemekteyiz.
-            return PartialView();
+            var authorDetails = blogManager.getBlogById(id);
+            return PartialView(authorDetails);
         }
 
-        public PartialViewResult authorPopularBlogs()
+        public PartialViewResult authorPopularBlogs(int id) // Parametre olarak girilen id, bloğun id'sidir.
         {
             // Bu metot ile blog içerisinde sağ tarafta yazar bilgisini görüntülemekteyiz.
-            return PartialView();
+            var blogAuthorId = blogManager.getAll().Where(x => x.id == id).Select(y=>y.authorId).FirstOrDefault();
+            var authorBlogs = blogManager.getBlogByAuthor(blogAuthorId);
+            return PartialView(authorBlogs);
         }
     }
 }

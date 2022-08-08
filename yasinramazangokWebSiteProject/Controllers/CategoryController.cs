@@ -15,6 +15,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult Index()
         {
             // Bu Index metodunun "view"ında biz HTML-CSS kodları ile bu metodun yaptığı işi kullanıcıya sunuyoruz.
+            // Bu metot ile kategorileri listeliyoruz.
             var categoryValues = categoryManager.getAll();
             return View(categoryValues);
         }
@@ -22,7 +23,8 @@ namespace yasinramazangokWebSiteProject.Controllers
         public PartialViewResult categoryListInBlogDetails()
         {
             // Herhangi bir blogtaki sağ tarafta kategorilerin listelenmesi bu metot ile sağlanmaktadır.
-            return PartialView();
+            var categoryValues = categoryManager.getAll();
+            return PartialView(categoryValues);
         }
     }
 }

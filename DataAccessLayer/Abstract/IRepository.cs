@@ -34,5 +34,7 @@ namespace DataAccessLayer.Abstract
         */
 
         List<T> list(Expression<Func<T, bool>> filter); // istediğimiz herhangi bir şarta göre search işlemi yapabileceğimiz Expression Delegate ifadesi bu şekildedir.
+
+        T find(Expression<Func<T, bool>> where); // İstediğimiz herhangi bir şarta göre o değeri bulma metodu budur.
     }
 }

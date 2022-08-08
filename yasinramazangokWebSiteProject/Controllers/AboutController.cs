@@ -10,10 +10,12 @@ namespace yasinramazangokWebSiteProject.Controllers
     public class AboutController : Controller
     {
         // GET: About
+        AboutManager aboutManager = new AboutManager();
         public ActionResult Index()
         {
             // Bu metot ile ana sayfadaki üst menüden ve footer'dan tıklandığında HAKKIMIZDA sayfasının görüntülenmesi sağlanmaktadır!!!
-            return View();
+            var aboutContent = aboutManager.getAll();
+            return View(aboutContent);
         }
 
         public PartialViewResult footer()
@@ -28,7 +30,9 @@ namespace yasinramazangokWebSiteProject.Controllers
         {
             // Hakkımızda sayfasındaki takımımızla tanışın bölümünün görüntülenmesi bu metot ile sağlanmaktadır.
             // Hakkımızda sayfasının index bölümünde yazmadık çünkü buradaki bölümü veri tabanında farklı bir tablodan çektiğimiz için.
-            return PartialView();
+            AuthorManager authorManager = new AuthorManager();  
+            var authorList = authorManager.getAll();
+            return PartialView(authorList);
         }
     }
 }

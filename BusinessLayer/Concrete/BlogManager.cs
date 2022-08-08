@@ -34,5 +34,33 @@ namespace BusinessLayer.Concrete
             // Expression Delegate ile yazılabilen Generic ve dinamik yapıya bu kullanım örnektir.
             return repoBlog.list(x => x.id == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
         }
+
+        public List<Blog> getBlogByAuthor(int id)
+        {
+            // Expression Delegate ile yazılabilen Generic ve dinamik yapıya bu kullanım örnektir.
+            return repoBlog.list(x => x.authorId == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
+        }
+
+        public List<Blog> getBlogByCategory(int id)
+        {
+            // Expression Delegate ile yazılabilen Generic ve dinamik yapıya bu kullanım örnektir.
+            return repoBlog.list(x => x.categoryId == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
+        }
+
+        public int blogAddBL(Blog p)
+        {
+            if (p.title==""|| p.image=="" || p.title.Length<=5 || p.content.Length <= 200)
+            {
+                return -1;
+            }
+            return repoBlog.insert(p);
+        }
+
+        public int deleteBlogBL(int p)
+        {
+            // id'ye göre ilgili bloğu silen metot burasıdır.   
+            Blog blog = repoBlog.find(x => x.id == p);
+            return repoBlog.delete(blog);   
+        }
     }
 }

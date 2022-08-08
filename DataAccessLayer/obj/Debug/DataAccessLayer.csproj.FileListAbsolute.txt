@@ -15,3 +15,5 @@ D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.mig1.resources
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.cache
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.mig2.resources
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.mig3.resources

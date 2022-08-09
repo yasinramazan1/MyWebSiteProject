@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,21 @@ namespace yasinramazangokWebSiteProject.Controllers
             AuthorManager authorManager = new AuthorManager();  
             var authorList = authorManager.getAll();
             return PartialView(authorList);
+        }
+
+        [HttpGet]
+        public ActionResult updateAboutList()
+        {
+            // Hakkımızda sayfasının admin panelinde güncellenme işlemleri bu metot ile sağlanmaktadır. Yani hakkımızda sayfası yüklendiğin verileri getiren metot budur.
+            var aboutList = aboutManager.getAll();
+            return View(aboutList);
+        }
+
+        [HttpPost]
+        public ActionResult updateAbout(About p)
+        {
+            aboutManager.updateAboutBM(p);
+            return RedirectToAction("updateAboutList");
         }
     }
 }

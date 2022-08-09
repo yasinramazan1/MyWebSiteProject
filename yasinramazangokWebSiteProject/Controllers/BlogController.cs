@@ -90,7 +90,6 @@ namespace yasinramazangokWebSiteProject.Controllers
         //}
 
 
-
         public ActionResult blogDetails()
         {
             // Bu metodun view'ı Blog'larda olduğu gibi ana index görevi görmektedir. Yani bütün partial'ların toplandığı view'dır.
@@ -129,6 +128,13 @@ namespace yasinramazangokWebSiteProject.Controllers
             return View(blogList);
         }
 
+        public ActionResult adminBlogList2()
+        {
+            // Bu metot ile admin panelinde bloglar listelenebiliyor.
+            var blogList = blogManager.getAll();
+            return View(blogList);
+        }
+
         [HttpGet]
         public ActionResult addNewBlog()
         {
@@ -160,9 +166,52 @@ namespace yasinramazangokWebSiteProject.Controllers
 
         public ActionResult deleteBlog(int id)
         {
+            // id'ye göre bloğu silme
+            // Bu metodun bir partial'ı yoktur çünkü zaten silinme işlemi yapıldığında yine blog listesi görüntülenecektir. O yüzden aşağıda da "adminBlogList"e yönlendirdik.
             blogManager.deleteBlogBL(id);
+            return RedirectToAction("adminBlogList"); // adminBlogList'e gitmesinin sebebi adminBlogList'in admin panelinin ana indexi görevini görüyor olmasıdır.
+        }
+
+        [HttpGet]
+        public ActionResult updateBlog(int id)
+        {
+            // Blogların güncelleme işlemi bu metot ile yapılmaktadır.
+            Blog blog = blogManager.findBlog(id);
+
+            Context c = new Context();
+            List<SelectListItem> values = (from x in c.CATEGORIES.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.name,
+                                               Value = x.id.ToString()
+                                           }).ToList();
+            ViewBag.values = values;
+            List<SelectListItem> values2 = (from x in c.AUTHORS.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = x.name,
+                                                Value = x.id.ToString()
+                                            }).ToList();
+            ViewBag.values2 = values2;
+            return View(blog);
+        }
+
+        [HttpPost]
+        public ActionResult updateBlog(Blog p)
+        {
+            blogManager.updateBlog(p);
             return RedirectToAction("adminBlogList");
         }
+
+         public ActionResult getCommentByBlog(int id)
+        {
+            // Bloğa göre yorum getirme işlemi bu metot ile sağlanmaktadır.
+            CommentManager categoryManager = new CommentManager();    
+            var commentList = categoryManager.commentByBlog(id);
+            return View(commentList);
+        }
+
+
 
 
 

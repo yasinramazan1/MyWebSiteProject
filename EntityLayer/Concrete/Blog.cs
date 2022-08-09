@@ -26,6 +26,8 @@ namespace EntityLayer.Concrete
         // Blog içeriğine kısıtlama getirmedik çünkü blog içeriği çok uzun olabilir.
         public string content { get; set; }
 
+        public int blogRating { get; set; }
+
         public int categoryId { get; set; }
         public virtual Category category { get; set; }
 

@@ -26,5 +26,12 @@ namespace yasinramazangokWebSiteProject.Controllers
             var categoryValues = categoryManager.getAll();
             return PartialView(categoryValues);
         }
+
+        
+        public ActionResult adminCategoryList()
+        {
+            var categoryList = categoryManager.getAll();
+            return View(categoryList);
+        }
     }
 }

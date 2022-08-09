@@ -22,5 +22,6 @@
     @Html.Label("İçerik")
     @Html.TextAreaFor(x => x.content, 5, 20, new { @class = "form-control" })
     <br />
-    <button class="btn btn-warning">Kaydet</button>
+    <button class="btn btn-warning">Yayınla</button>
 </form>
+<!-- Eğer içerik 200 karakterden az olursa bloglara ekleme yapılmaz çünkü BlogManager'da o şkeilde tanımlandı. İlerleyene zamanlarda değiştirilecek. -->

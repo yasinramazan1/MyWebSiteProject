@@ -1,0 +1,40 @@
+﻿<!-- Yazarların profillerini düzenlemelerini sağlayan sayfanın view'ı burasıdır.-->
+@model EntityLayer.Concrete.Author
+@{
+    ViewBag.Title = "authorEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<form class="form-group" method="post">
+    @Html.Label("Yazar ID")
+    @Html.TextBoxFor(x => x.id, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazar Adı")
+    @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazarın Resmi")
+    @Html.TextBoxFor(x => x.image, new { @class = "form-control" })
+    <br />
+    @*@Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.categoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+        <br />*@
+    @Html.Label("Yazarın Mesajı")
+    @Html.TextBoxFor(x => x.aboutShort, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazarın Mesleği")
+    @Html.TextBoxFor(x => x.job, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mail Adresi")
+    @Html.TextBoxFor(x => x.mail, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.password, new { @class = "form-control" })
+    <br />
+    @Html.Label("Telefon Numarası")
+    @Html.TextBoxFor(x => x.phoneNumber, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazar Hakkında")
+    @Html.TextAreaFor(x => x.about, 5, 20, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Kaydet</button>
+</form>
+

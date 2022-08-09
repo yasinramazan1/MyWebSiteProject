@@ -24,10 +24,10 @@
             <td>@item.title</td>
             <td>@item.category.name</td>
             <td>@item.date.ToShortDateString()</td>
-            <td><a href="/Blog/deleteBlog" class="btn btn-danger">Sil</a></td>
-            <td><a href="" class="btn btn-success">Güncelle</a></td>
-            <td><a href="" class="btn btn-warning">Detaylar</a></td>
-            <td><a href="" class="btn btn-dark">Yorumlar</a></td>
+            <td><a href="/Blog/deleteBlog/@item.id" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Blog/updateBlog/@item.id" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Blog/blogDetails/@item.id" class="btn btn-warning">Detaylar</a></td>
+            <td><a href="/Blog/getCommentByBlog/@item.id" class="btn btn-dark">Yorumlar</a></td>
         </tr>
     }
 </table>

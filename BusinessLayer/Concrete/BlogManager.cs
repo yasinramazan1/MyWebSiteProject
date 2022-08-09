@@ -16,7 +16,7 @@ namespace BusinessLayer.Concrete
         {
             return repoBlog.list(); // Repository'deki metotları çağırabiliyoruz.
         }
-        
+
         /*
         public List<Blog> blogById(int id)
         {
@@ -49,7 +49,7 @@ namespace BusinessLayer.Concrete
 
         public int blogAddBL(Blog p)
         {
-            if (p.title==""|| p.image=="" || p.title.Length<=5 || p.content.Length <= 200)
+            if (p.title == "" || p.image == "" || p.title.Length <= 5 || p.content.Length <= 200)
             {
                 return -1;
             }
@@ -60,7 +60,24 @@ namespace BusinessLayer.Concrete
         {
             // id'ye göre ilgili bloğu silen metot burasıdır.   
             Blog blog = repoBlog.find(x => x.id == p);
-            return repoBlog.delete(blog);   
+            return repoBlog.delete(blog);
+        }
+
+        public Blog findBlog(int id)
+        {
+            return repoBlog.find(x => x.id == id);
+        }
+
+        public int updateBlog(Blog p)
+        {
+            Blog blog = repoBlog.find(x => x.id == p.id);
+            blog.title = p.title;   
+            blog.date = p.date;
+            blog.authorId = p.authorId;
+            blog.content = p.content;
+            blog.categoryId = p.categoryId;
+            blog.image = p.image;
+            return repoBlog.update(blog);
         }
     }
 }

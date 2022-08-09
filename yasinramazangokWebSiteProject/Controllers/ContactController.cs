@@ -29,5 +29,18 @@ namespace yasinramazangokWebSiteProject.Controllers
             contactManager.BLContactAdd(p);
             return View();
         }
+
+        public ActionResult inbox()
+        {
+            // Gelen kutusu
+            var messageList = contactManager.getAll();
+            return View(messageList);
+        }
+
+        public ActionResult messageDetails(int id)
+        {
+            Contact contact = contactManager.getMessageDetails(id);
+            return View(contact);
+        }
     }
 }

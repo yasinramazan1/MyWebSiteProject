@@ -15,23 +15,50 @@ namespace BusinessLayer.Concrete
         public List<Comment> commentList()
         {
             // Bu metot sitede yapılan bütün yorumları listeler, admin panelinde kullanılır.
-            return repoComment.list();  
+            return repoComment.list();
         }
 
         public List<Comment> commentByBlog(int id)
         {
             // Bir bloğa yapılan yorumları listeleyen metot budur.
-            return repoComment.list(x=>x.blogId==id);
+            return repoComment.list(x => x.blogId == id);
+        }
+
+        public List<Comment> commentByStatusTrue()
+        {
+            // Bir bloğa yapılan yorumlardan durumu true yani yayınlananları listeleyen metot budur.
+            return repoComment.list(x => x.status == true);
+        }
+
+        public List<Comment> commentByStatusFalse()
+        {
+            // Bir bloğa yapılan yorumlardan durumu false yani yayınlanmayanları listeleyen metot budur.
+            return repoComment.list(x => x.status == false);
         }
 
         public int commentAdd(Comment c)
         {
             // Bir bloğa yorum ekleme metodu
-            if(c.text.Length<=4 || c.text.Length>=401 || c.userName=="" || c.mail == "")
+            if (c.text.Length <= 4 || c.text.Length >= 401 || c.userName == "" || c.mail == "")
             {
                 return -1;
             }
             return repoComment.insert(c);
         }
+
+        public int commentStatusChangeToFalse(int id)
+        {
+            Comment comment = repoComment.find(x => x.id == id);
+            comment.status = false;
+            return repoComment.update(comment);
+        }
+
+        public int commentStatusChangeToTrue(int id)
+        {
+            Comment comment = repoComment.find(x => x.id == id);
+            comment.status = true;
+            return repoComment.update(comment);
+        }
+
     }
 }

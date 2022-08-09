@@ -20,5 +20,16 @@ namespace BusinessLayer.Concrete
             }
             return repoContact.insert(c); // Repository'deki metotları çağırabiliyoruz.
         }
+
+        public List<Contact> getAll()
+        {
+            return repoContact.list(); // Repository'deki metotları çağırabiliyoruz.
+        }
+
+        public Contact getMessageDetails(int id)
+        {
+            // Dışarıdan gönderilen id parametresine veri tabanında denk gelen id'nin detaylarını getiren metot budur.
+            return repoContact.find(x => x.id == id);
+        }
     }
 }

@@ -21,6 +21,21 @@ namespace EntityLayer.Concrete
         [StringLength(500)]
         public string about { get; set; }
 
+        [StringLength(75)]
+        public string job { get; set; } // Yazarların mesleği
+
+        [StringLength(120)]
+        public string aboutShort { get; set; }
+
+        [StringLength(75)]
+        public string mail { get; set; }
+
+        [StringLength(75)]
+        public string password { get; set; }
+
+        [StringLength(40)]
+        public string phoneNumber { get; set; }
+
         // İlişki türü olduğu için burada herhangi bir attribute kullanılmaz.
         public ICollection<Blog> blogs { get; set; }
     }

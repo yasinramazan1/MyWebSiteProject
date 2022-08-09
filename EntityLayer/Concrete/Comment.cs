@@ -23,6 +23,8 @@ namespace EntityLayer.Concrete
 
         public DateTime commentDate { get; set; }
 
+        public bool status { get; set; }
+
         public int blogId { get; set; }
         public virtual Blog blog { get; set; }
     }

@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace yasinramazangokWebSiteProject.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         UserProfileManager userProfile = new UserProfileManager();
@@ -25,6 +27,12 @@ namespace yasinramazangokWebSiteProject.Controllers
             var mail = (string)Session["mail"];
             var profileValues = userProfile.getAuthorByMail(mail);
             return PartialView(profileValues);
+        }
+
+        public ActionResult updateAuthorProfile(Author p)
+        {
+            userProfile.editAuthor(p);
+            return RedirectToAction("Index");
         }
 
         public ActionResult authorBlogList(string p)
@@ -66,6 +74,42 @@ namespace yasinramazangokWebSiteProject.Controllers
         {
             blogManager.updateBlog(p);
             return RedirectToAction("authorBlogList");
+        }
+
+        [HttpGet]
+        public ActionResult addNewBlogAdmin()
+        {
+            // Admin panelinde yeni blok ekleme işlemi için bu metot kullanılır.
+            Context c = new Context();
+            List<SelectListItem> values = (from x in c.CATEGORIES.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.name,
+                                               Value = x.id.ToString()
+                                           }).ToList();
+            ViewBag.values = values;
+            List<SelectListItem> values2 = (from x in c.AUTHORS.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = x.name,
+                                                Value = x.id.ToString()
+                                            }).ToList();
+            ViewBag.values2 = values2;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult addNewBlogAdmin(Blog b)
+        {
+            blogManager.blogAddBL(b);
+            return RedirectToAction("authorBlogList");
+            // adminBlogList, admin panelinin index sayfası olduğu için o sayfaya yönlendiriyoruz.
+        }
+
+        public ActionResult logOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("authorLogin", "Login");
         }
 
     }

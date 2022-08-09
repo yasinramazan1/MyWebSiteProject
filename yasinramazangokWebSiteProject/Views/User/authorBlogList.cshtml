@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+﻿<!-- Her yazarın kendi panelini görüntüleyen view burasıdır. -->
+@model IEnumerable<EntityLayer.Concrete.Blog>
 @{
     ViewBag.Title = "authorBlogList";
     Layout = "~/Views/Shared/AuthorLayout.cshtml";
@@ -100,12 +101,16 @@
                         }
                     </tbody>
                 </table>
+
             </div>
             <!-- /.card-body -->
+
         </div>
         <!-- /.card -->
+
     </section>
     <!-- /.content -->
+    <a href="/User/addNewBlogAdmin/" class="btn btn-primary">Yeni Blog Yaz</a> 
 </body>
 </html>
 

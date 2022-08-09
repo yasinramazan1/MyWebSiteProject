@@ -1,15 +1,16 @@
-﻿<div class="site-section bg-light">
+﻿<!-- Ana sayfada üstte öne çıkan, her birisi farklı kategorilerden gelen 5 blogun görüntülenmesini sağlayan view burasıdır! -->
+<div class="site-section bg-light">
     <div class="container">
         <div class="row align-items-stretch retro-layout-2">
             <div class="col-md-4">
-                <a href="single.html" class="h-entry mb-30 v-height gradient" style="background-image: url('@ViewBag.blogImage1');">
+                <a href="/Blog/blogDetails/@ViewBag.blogId1" class="h-entry mb-30 v-height gradient" style="background-image: url('@ViewBag.blogImage1');">
 
                     <div class="text">
                         <h2>@ViewBag.blogTitle1</h2>
                         <span class="date">@(((DateTime)ViewBag.blogDate1).ToString("dd-MMM-yyyy"))</span>
                     </div>
                 </a>
-                <a href="single.html" class="h-entry v-height gradient" style="background-image: url('@ViewBag.blogImage2');">
+                <a href="/Blog/blogDetails/@ViewBag.blogId2" class="h-entry v-height gradient" style="background-image: url('@ViewBag.blogImage2');">
 
                     <div class="text">
                         <h2>@ViewBag.blogTitle2</h2>
@@ -18,7 +19,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="single.html" class="h-entry img-5 h-100 gradient" style="background-image: url('@ViewBag.blogImage5');">
+                <a href="/Blog/blogDetails/@ViewBag.blogId5" class="h-entry img-5 h-100 gradient" style="background-image: url('@ViewBag.blogImage5');">
                     <div class="text">
                         <h2>@ViewBag.blogTitle5</h2>
                         <span class="date">@(((DateTime)ViewBag.blogDate5).ToString("dd-MMM-yyyy"))</span>
@@ -26,14 +27,14 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="single.html" class="h-entry mb-30 v-height gradient" style="background-image: url('@ViewBag.blogImage3');">
+                <a href="/Blog/blogDetails/@ViewBag.blogId3" class="h-entry mb-30 v-height gradient" style="background-image: url('@ViewBag.blogImage3');">
 
                     <div class="text">
                         <h2>@ViewBag.blogTitle3</h2>
                         <span class="date">@(((DateTime)ViewBag.blogDate3).ToString("dd-MMM-yyyy"))</span>
                     </div>
                 </a>
-                <a href="single.html" class="h-entry v-height gradient" style="background-image: url('@ViewBag.blogImage4');">
+                <a href="/Blog/blogDetails/@ViewBag.blogId4" class="h-entry v-height gradient" style="background-image: url('@ViewBag.blogImage4');">
 
                     <div class="text">
                         <h2>@ViewBag.blogTitle4</h2>

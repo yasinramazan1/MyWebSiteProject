@@ -26,5 +26,19 @@ namespace BusinessLayer.Concrete
             // Yazara göre blogları getiren metot burasıdır.
             return repoUserBlog.list(x => x.authorId == id);
         }
+
+        public int editAuthor(Author p)
+        {
+            Author author = repoUser.find(x => x.id == p.id);
+            author.name = p.name;
+            author.image = p.image;
+            author.job = p.job;
+            author.password = p.password;
+            author.mail = p.mail;
+            author.phoneNumber = p.phoneNumber;
+            author.aboutShort = p.aboutShort;
+            author.about = p.about;
+            return repoUser.update(author);
+        }
     }
 }

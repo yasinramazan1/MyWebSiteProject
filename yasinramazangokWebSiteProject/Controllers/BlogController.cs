@@ -35,46 +35,56 @@ namespace yasinramazangokWebSiteProject.Controllers
 
         public PartialViewResult featuredBlogs()
         {
-            // Öne çıkan blogların listelendiği partial burasıdır.           
+            // Ana sayfada üstte öne çıkan blogların listelendiği partial burasıdır.           
             // Öne Çıkan Bloglarda 1. Blog
             var blogTitle1 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.title).FirstOrDefault(); // Bu tanımlama kategori id'si 1 olan blog title'lar içerisindeki ilk bloğun başlığını getirir.
             var blogImage1 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.image).FirstOrDefault();
             var blogDate1 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.date).FirstOrDefault();
+            var blogId1 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle1 = blogTitle1; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage1 = blogImage1;
-            ViewBag.blogDate1 = blogDate1;            
+            ViewBag.blogDate1 = blogDate1;
+            ViewBag.blogId1 = blogId1; // Bu viewbag ana sayfada link görevi görmektedir! 
 
             // Öne Çıkan Bloglarda 2. Blog
             var blogTitle2 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.title).FirstOrDefault();
             var blogImage2 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.image).FirstOrDefault();
             var blogDate2 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.date).FirstOrDefault();
+            var blogId2 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle2 = blogTitle2; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage2 = blogImage2;
             ViewBag.blogDate2 = blogDate2;
+            ViewBag.blogId2 = blogId2;
 
             // Öne Çıkan Bloglarda 3. Blog
             var blogTitle3 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.title).FirstOrDefault();
             var blogImage3 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.image).FirstOrDefault();
             var blogDate3 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.date).FirstOrDefault();
+            var blogId3 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle3 = blogTitle3; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage3 = blogImage3;
             ViewBag.blogDate3 = blogDate3;
+            ViewBag.blogId3 = blogId3;
 
             // Öne Çıkan Bloglarda 2. Blog
             var blogTitle4 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.title).FirstOrDefault();
             var blogImage4 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.image).FirstOrDefault();
             var blogDate4 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.date).FirstOrDefault();
+            var blogId4 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle4 = blogTitle4; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage4 = blogImage4;
             ViewBag.blogDate4 = blogDate4;
+            ViewBag.blogId4 = blogId4;
 
             // Öne Çıkan Bloglarda Ortadaki Büyük Blog
             var blogTitle5 = blogManager.getAll().Where(x => x.category.id == 1).Select(y => y.title).FirstOrDefault();
             var blogImage5 = blogManager.getAll().Where(x => x.category.id == 1).Select(y => y.image).FirstOrDefault();
             var blogDate5 = blogManager.getAll().Where(x => x.category.id == 1).Select(y => y.date).FirstOrDefault();
+            var blogId5 = blogManager.getAll().Where(x => x.category.id == 1).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle5 = blogTitle5; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage5 = blogImage5;
             ViewBag.blogDate5 = blogDate5;
+            ViewBag.blogId5 = blogId5;
             return PartialView();
         }
         public PartialViewResult otherFeaturedBlogs()

@@ -140,6 +140,7 @@
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SubscribeMailController.cs" />
@@ -2424,6 +2425,11 @@
     <Content Include="Report-Login-Free\fonts\fontawesome-webfont.woff" />
     <Content Include="Report-Login-Free\fonts\fontawesome-webfont.woff2" />
     <Content Include="Report-Login-Free\fonts\FontAwesome.otf" />
+    <Content Include="web\css\style.css" />
+    <Content Include="web\images\16.jpg" />
+    <Content Include="web\images\img-sprite.png" />
+    <Content Include="web\index.html" />
+    <Content Include="web\w3layouts-License.txt" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2496,6 +2502,8 @@
     <Content Include="Views\User\partial1.cshtml" />
     <Content Include="Views\User\authorBlogList.cshtml" />
     <Content Include="Views\User\updateBlogAdmin.cshtml" />
+    <Content Include="Views\User\addNewBlogAdmin.cshtml" />
+    <Content Include="Views\Error\page404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

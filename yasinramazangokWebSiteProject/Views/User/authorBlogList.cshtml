@@ -1,4 +1,4 @@
-﻿<!-- Her yazarın kendi panelini görüntüleyen view burasıdır. -->
+﻿<!-- YAZAR GİRİŞİ HER YAZARIN KENDİ ANA SAYFASI VE BLOGLARIN DURUMUNU GÖRÜNTÜLEME -->
 @model IEnumerable<EntityLayer.Concrete.Blog>
 @{
     ViewBag.Title = "authorBlogList";
@@ -6,6 +6,7 @@
 }
 @{ string color = "";}
 @{ string caseName = "";}
+@{ int puan = 1;}
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini">
@@ -47,41 +48,44 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            if (item.blogRating > 85)
+                            puan = 10 * item.blogRating;
+
+                            if (puan > 85)
                             {
                                 color = "post-category text-white bg-success mb-3";
                                 caseName = "Çok iyi";
                             }
 
-                            if (item.blogRating <= 84 && item.blogRating >= 70)
+                            if (puan <= 84 && puan >= 70)
                             {
                                 color = "post-category text-white bg-info mb-3";
                                 caseName = "İyi";
                             }
 
-                            if (item.blogRating >= 50 && item.blogRating <= 69)
+                            if (puan >= 50 && puan <= 69)
                             {
                                 color = "post-category text-white bg-warning mb-3";
                                 caseName = "Orta";
                             }
 
-                            if (item.blogRating >= 0 && item.blogRating <= 49)
+                            if (puan >= 0 && puan <= 49)
                             {
                                 color = "post-category text-white bg-danger mb-3";
                                 caseName = "Kötü";
                             }
+
                             <tr>
                                 <td>@item.id</td>
-                                <td>@item.title</td>
+                                <td>@item.title</td>               
                                 <td class="project_progress">
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="@item.blogRating" aria-volumemin="0" aria-volumemax="10" style="width: @item.blogRating%">
+                                        <div class="progress progress-sm">
+                                            <div class="@color" role="progressbar" aria-volumenow="@item.blogRating" aria-volumemin="0" aria-volumemax="10" style="width: @puan% ">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <small>
-                                        @item.blogRating%
-                                    </small>
-                                </td>
+                                        <small>
+                                            @puan
+                                        </small>
+                                    </td>
                                 <td class="project-state">
                                     <span class="badge badge-@color">@caseName</span>
                                 </td>
@@ -101,16 +105,13 @@
                         }
                     </tbody>
                 </table>
-
             </div>
             <!-- /.card-body -->
-
         </div>
         <!-- /.card -->
-
     </section>
     <!-- /.content -->
-    <a href="/User/addNewBlogAdmin/" class="btn btn-primary">Yeni Blog Yaz</a> 
+    <a href="/User/addNewBlogAdmin/" class="btn btn-primary">Yeni Blog Yaz</a>
 </body>
 </html>
 

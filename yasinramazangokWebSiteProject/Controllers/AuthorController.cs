@@ -13,6 +13,8 @@ namespace yasinramazangokWebSiteProject.Controllers
         // GET: Author
         BlogManager blogManager = new BlogManager();
         AuthorManager authorManager = new AuthorManager();
+
+        [AllowAnonymous]
         public PartialViewResult authorAbout(int id)
         {
             // Bu metot ile blog içerisinde sağ tarafta yazar bilgisini görüntülemekteyiz.
@@ -20,6 +22,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             return PartialView(authorDetails);
         }
 
+        [AllowAnonymous]
         public PartialViewResult authorPopularBlogs(int id) // Parametre olarak girilen id, bloğun id'sidir.
         {
             // Bu metot ile blog içerisinde sağ tarafta yazar bilgisini görüntülemekteyiz.

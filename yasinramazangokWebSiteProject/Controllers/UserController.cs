@@ -107,6 +107,7 @@ namespace yasinramazangokWebSiteProject.Controllers
 
         public ActionResult logOut()
         {
+            // Sisteme authentication olan admin veya yazarlar için çıkış yapma işlemi 
             FormsAuthentication.SignOut();
             Session.Abandon();
             return RedirectToAction("authorLogin", "Login");

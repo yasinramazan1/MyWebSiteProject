@@ -18,12 +18,15 @@ namespace yasinramazangokWebSiteProject.Controllers
         // ViewBag komutu controller'dan view'lara bir değer taşınmak istendiği zaman kullanılan C#-MVC komutudur.
 
         BlogManager blogManager = new BlogManager();
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             // Ana index bu metodun view'ıdır.
             return View();
         }
 
+        [AllowAnonymous]
         public PartialViewResult blogList(int page = 1)
         {
             // Blogların ana sayfada listelendiği ana partial burasıdır.
@@ -33,6 +36,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             return PartialView(blogList);
         }
 
+        [AllowAnonymous]
         public PartialViewResult featuredBlogs()
         {
             // Ana sayfada üstte öne çıkan blogların listelendiği partial burasıdır.           
@@ -87,31 +91,34 @@ namespace yasinramazangokWebSiteProject.Controllers
             ViewBag.blogId5 = blogId5;
             return PartialView();
         }
+
+        [AllowAnonymous]
         public PartialViewResult otherFeaturedBlogs()
         {
             // Footer'ın hemen üzerinde öne çıkan blogların listelendiği partial burasıdır.
             return PartialView();
         }
-
         //public PartialViewResult mailSubscribe()
         //{
         //    // Footer'ın hemen üzerinde mail aboneliğinin partial'ı burasıdır.
         //    return PartialView();
         //}
 
-
+        [AllowAnonymous]
         public ActionResult blogDetails()
         {
             // Bu metodun view'ı Blog'larda olduğu gibi ana index görevi görmektedir. Yani bütün partial'ların toplandığı view'dır.
             return View();
         }
 
+        [AllowAnonymous]
         public PartialViewResult blogCover(int id)
         {
             var blogDetailsList = blogManager.getBlogById(id);
             return PartialView(blogDetailsList);
         }
 
+        [AllowAnonymous]
         public PartialViewResult readAllBlog(int id)
         {
             // Bir bloğun yazısının hepsini görüntüleme yani bloğu görüntüleme bu metot üzerinde çalışmaktadır.
@@ -120,6 +127,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             return PartialView(blogDetailsList);
         }
 
+        [AllowAnonymous]
         public ActionResult blogByCategory(int id)
         {
             // Üst menü ve footer'daki kategorilere tıklandığında o kategorinin bloglarının görüntülenmesi yani kategori detay sayfası bu metot ile sağlanmaktadır. 
@@ -131,6 +139,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             return View(blogListByCategory);
         }
 
+        // [Authorize] attribute'ını normalde burada kullanmıştık ama proje bazında authorize yaptığımız için kaldırdık.
         public ActionResult adminBlogList()
         {
             // Bu metot ile admin panelinde bloglar listelenebiliyor.
@@ -145,10 +154,11 @@ namespace yasinramazangokWebSiteProject.Controllers
             return View(blogList);
         }
 
+        [Authorize(Roles ="A")] // Bu tanımlama ile artık addNewBlog'a rolü A olan adminler erişebilecektir.
         [HttpGet]
         public ActionResult addNewBlog()
         {
-            // Admin panelinde yeni blok ekleme işlemi için bu metot kullanılır.
+            // Admin panelinde yeni blok ekleme
             Context c = new Context();
             List<SelectListItem> values = (from x in c.CATEGORIES.ToList()
                                            select new SelectListItem 
@@ -221,10 +231,11 @@ namespace yasinramazangokWebSiteProject.Controllers
             return View(commentList);
         }
 
-
-
-
-
-
+        public ActionResult authorBlogList(int id)
+        {
+            // Admin panelinde yazarların kendi sayfasında bloglarını görüntüleyen metot burasıdır.          
+            var blogs = blogManager.getBlogByAuthor(id);
+            return View(blogs);
+        }
     }
 }

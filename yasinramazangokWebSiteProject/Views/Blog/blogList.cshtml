@@ -1,4 +1,4 @@
-﻿<!-- Blogların ana sayfada listelendiği partial burasıdır. -->
+﻿<!-- ANA SAYFA GÜNCEL BLOGLAR -->
 @using PagedList
 @using PagedList.Mvc
 
@@ -43,6 +43,7 @@
                                 <figure class="author-figure mb-0 mr-3 float-left"><img src="@item.author.image" alt="Image" class="img-fluid"></figure>
                                 <span class="d-inline-block mt-1"><a href="#">@item.author.name</a></span>
                                 <span>&nbsp;-&nbsp; @(((DateTime)item.date).ToString("dd-MMM-yyyy"))</span>
+                                Puan: @item.blogRating
                             </div>
                             <p>@item.content.Substring(0, item.content.Substring(0, 200).LastIndexOf(" "))...</p>
                             <p><a href="#">Devamını Oku</a></p>

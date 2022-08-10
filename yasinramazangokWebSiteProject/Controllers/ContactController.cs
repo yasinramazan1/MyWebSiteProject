@@ -12,17 +12,21 @@ namespace yasinramazangokWebSiteProject.Controllers
     {
         // GET: Contact
         ContactManager contactManager = new ContactManager();
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult sendMessage()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult sendMessage(Contact p)
         {

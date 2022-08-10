@@ -24,6 +24,8 @@ namespace EntityLayer.Concrete
         [StringLength(500)]
         public string description { get; set; }
 
+        public bool status { get; set; } // Kategorileri admin panelinde silmek yerine aktif pasif yapmak için bu özelliği tanımladık. Çünkü silinen bir kategoride bütün bilgiler siliniyor!!!
+
         // Bir kategoride birden fazla blog olabilir. Bu yüzden bire-çok ilişki tanımlaması yapılır.
         public ICollection<Blog> blogs { get; set; }
     }

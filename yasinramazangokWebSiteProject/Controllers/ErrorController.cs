@@ -7,6 +7,7 @@ using System.Web.Mvc;
 namespace yasinramazangokWebSiteProject.Controllers
 {
     // Hata sayfaları kontrolü ve yönlendirmesi bu controller üzerinde yapılmaktadır.
+    [AllowAnonymous]
     public class ErrorController : Controller
     {
         // GET: Error

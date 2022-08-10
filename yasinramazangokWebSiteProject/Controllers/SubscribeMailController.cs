@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace yasinramazangokWebSiteProject.Controllers
 {
+    [AllowAnonymous]
     public class SubscribeMailController : Controller
     {
         // GET: SubscribeMail

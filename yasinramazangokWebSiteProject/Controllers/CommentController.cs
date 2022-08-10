@@ -12,6 +12,8 @@ namespace yasinramazangokWebSiteProject.Controllers
     {
         // GET: Comment
         CommentManager commentManager = new CommentManager();
+
+        [AllowAnonymous]
         public PartialViewResult blogCommentList(int id)
         {
             // Bu metot ile bir bloğa yapılan yorumları görüntüleyebiliyoruz. Bir id'ye göre yorumlar listelenir.
@@ -19,6 +21,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             return PartialView(commentList);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public PartialViewResult leaveComment(int id)
         {
@@ -27,10 +30,12 @@ namespace yasinramazangokWebSiteProject.Controllers
             return PartialView();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public PartialViewResult leaveComment(Comment c)
         {
             // Bu metot ile bir bloğa yorum yapabiliyoruz.
+            c.status = true; // Bir yorum yapıldığında otomatik olarak veri tabanına true kaydedilmesi ve anında blogların altında görülmesi için bu tanım yapıldı.
             commentManager.commentAdd(c);
             return PartialView();
         }

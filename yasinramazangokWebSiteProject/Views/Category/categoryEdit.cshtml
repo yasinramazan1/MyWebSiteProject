@@ -1,0 +1,19 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    ViewBag.Title = "categoryEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<form class="form-group" method="post">
+    @Html.Label("Kategori ID")
+    @Html.TextBoxFor(x => x.id, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori Adı")
+    @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori Açıklaması")
+    @Html.TextBoxFor(x => x.description, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+</form>
+
+

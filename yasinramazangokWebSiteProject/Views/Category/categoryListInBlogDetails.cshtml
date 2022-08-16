@@ -1,11 +1,15 @@
-﻿<!-- Bloglardaki sağ tarafta kategori isimlerinin listelenmesini sağlayan view burasıdır! -->
+﻿<!-- BLOG DETAYLARI KATEGORİ LİSTESİ -->
 @model IEnumerable<EntityLayer.Concrete.Category>
 <div class="sidebar-box">
     <h3 class="heading">Kategoriler</h3>
     <ul class="categories">
         @foreach (var item in Model)
         {
-            <li><a href="/Blog/blogByCategory/@item.id">@item.name<span></span></a></li>
+            if (item.status == true)
+            {
+                <li><a href="/Blog/blogByCategory/@item.id">@item.name<span></span></a></li>
+            }
+
         }
     </ul>
 </div>

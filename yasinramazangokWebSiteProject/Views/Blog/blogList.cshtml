@@ -3,7 +3,7 @@
 @using PagedList.Mvc
 
 @model IEnumerable<EntityLayer.Concrete.Blog>
-    @{ string color="";}
+@{ string color="";}
 <div class="site-section">
     <div class="container">
         <div class="row mb-5">
@@ -21,7 +21,7 @@
 
                 if (item.category.name == "Teknoloji")
                 {
-                    color = "post-category text-white bg-danger mb-3";
+                    color = "post-category text-white bg-success mb-3";
                 }
 
                 if (item.category.name == "Uzay")
@@ -31,22 +31,22 @@
 
                 if (item.category.name == "Havacılık")
                 {
-                    color = "post-category text-white bg-success mb-3";
+                    color = "post-category text-white bg-info mb-3";
                 }
                 <div class="col-lg-4 mb-4">
                     <div class="entry2">
-                        <a href="single.html"><img src="@item.image" style="height:250px" alt="Image" class="img-fluid rounded"></a>
+                        <a href="/Blog/blogDetails/@item.id"><img src="@item.image" style="height:250px" alt="Image" class="img-fluid rounded"></a>
                         <div class="excerpt">
-                            <span class="@color">@item.category.name</span>
+                            <a href="/Blog/blogByCategory/@item.categoryId"><span class="@color">@item.category.name</span></a>
                             <h2><a href="/Blog/blogDetails/@item.id">@item.title</a></h2>
                             <div class="post-meta align-items-center text-left clearfix">
                                 <figure class="author-figure mb-0 mr-3 float-left"><img src="@item.author.image" alt="Image" class="img-fluid"></figure>
-                                <span class="d-inline-block mt-1"><a href="#">@item.author.name</a></span>
+                                <span class="d-inline-block mt-1"><a href="/Blog/Index/">@item.author.name</a></span>
                                 <span>&nbsp;-&nbsp; @(((DateTime)item.date).ToString("dd-MMM-yyyy"))</span>
                                 Puan: @item.blogRating
                             </div>
                             <p>@item.content.Substring(0, item.content.Substring(0, 200).LastIndexOf(" "))...</p>
-                            <p><a href="#">Devamını Oku</a></p>
+                            <p><a href="/BLog/blogDetails/@item.id">Devamını Oku</a></p>
                         </div>
                     </div>
                 </div>

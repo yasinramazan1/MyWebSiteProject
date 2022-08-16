@@ -1,4 +1,4 @@
-﻿
+﻿<!-- BLOG DETAYLARI -->
 @{
     ViewBag.Title = "blogDetails";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -11,7 +11,7 @@
             <div class="col-md-12 col-lg-8 main-content">
                 @Html.Action("readAllBlog", "Blog")
                 @Html.Action("blogCommentList", "Comment")
-            </div> <!-- Bu div, blog sayfasında blogğun yazısının bitip sağ taraftaki yazar bilgisi, kategoriler vs. kısmına geçilen div'dir.' -->
+            </div> <!-- Bu div, blog sayfasında blogun yazısının bitip sağ taraftaki yazar bilgisi, kategoriler vs. kısmına geçilen div'dir.' -->
             <div class="col-md-12 col-lg-4 sidebar">
                 <!-- Bu div ile sağ tarafa bir alan oluşturuyoruz. -->
                 @Html.Action("authorAbout", "Author") <!-- Bloglarda sağ kısımdaki bloğun yazar bilgisini görüntüleme! -->

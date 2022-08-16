@@ -1,4 +1,5 @@
 ﻿<!-- SİTENİN ANA SAYFASI -->
+<!-- Ana sayfada internet bağlantısı olmadan link verilen fotoğraflar görünmez. -->
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -8,8 +9,8 @@
      Proje bir nevi buradan başlar diyebiliriz.
      Ve aynı zamanda aslında burası bir köprüdür. Diğer partial'ların toplandığı yerdir...
 -->
-@Html.Action("featuredBlogs", "Blog")
-@Html.Action("blogList", "Blog")
+@Html.Action("featuredBlogs", "Blog") 
+@Html.Action("blogList", "Blog")    
 @*@Html.Action("otherFeaturedBlogs", "Blog")*@
 @Html.Action("addMail", "SubscribeMail")
-@Html.Action("footer", "About") <!-- Projenin footer kısmı AboutController'ın içine yerleştirildi. Farklı bir controller'daki partial'ı da burada görüntüleyebildik.-->
+@Html.Action("footer", "About") <!-- Projenin footer kısmı AboutController'ın içine yerleştirildi. Farklı bir controller'daki partial'ı da burada görüntüleyebildik. -->

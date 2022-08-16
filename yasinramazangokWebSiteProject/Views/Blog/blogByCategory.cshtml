@@ -4,6 +4,7 @@
     ViewBag.Title = "blogByCategory";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+@{ string color = ""; }
 <div class="py-5 bg-light">
     <div class="container">
         <div class="row">
@@ -21,11 +22,30 @@
         <div class="row">
             @foreach (var item in Model)
             {
+                if (item.category.name == "Yazılım")
+                {
+                    color = "post-category text-white bg-warning mb-3";
+                }
+
+                if (item.category.name == "Teknoloji")
+                {
+                    color = "post-category text-white bg-success mb-3";
+                }
+
+                if (item.category.name == "Uzay")
+                {
+                    color = "post-category text-white bg-primary mb-3";
+                }
+
+                if (item.category.name == "Havacılık")
+                {
+                    color = "post-category text-white bg-info mb-3";
+                }
                 <div class="col-lg-4 mb-4">
                     <div class="entry2">
                         <a href="/Blog/blogDetails/@item.id"><img src="@item.image" style="height:250px" alt="Image" class="img-fluid rounded"></a>
                         <div class="excerpt">
-                            <span class="post-category text-white bg-secondary mb-3">@item.category.name</span>
+                            <span class="post-category text-white bg-@color mb-3">@item.category.name</span>
                             <h2><a href="/Blog/blogDetails/@item.id">@item.title</a></h2>
                             <div class="post-meta align-items-center text-left clearfix">
                                 <figure class="author-figure mb-0 mr-3 float-left"><img src="@item.author.image" alt="Image" class="img-fluid"></figure>

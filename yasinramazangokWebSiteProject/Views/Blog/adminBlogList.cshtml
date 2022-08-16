@@ -24,11 +24,11 @@
             <td>@item.title</td>
             <td>@item.category.name</td>
             <td>@item.date.ToShortDateString()</td>
+            <td><a href="/Blog/updateBlog/@item.id" class="btn btn-outline-success">Güncelle</a></td>
+            <td><a href="/Blog/blogDetails/@item.id" class="btn btn-outline-warning">Detaylar</a></td>
+            <td><a href="/Blog/getCommentByBlog/@item.id" class="btn btn-outline-primary">Yorumlar</a></td>
             <td><a href="/Blog/deleteBlog/@item.id" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Blog/updateBlog/@item.id" class="btn btn-success">Güncelle</a></td>
-            <td><a href="/Blog/blogDetails/@item.id" class="btn btn-warning">Detaylar</a></td>
-            <td><a href="/Blog/getCommentByBlog/@item.id" class="btn btn-dark">Yorumlar</a></td>
         </tr>
     }
 </table>
-<a href="/Blog/addNewBlog/" class="btn btn-primary">Yeni Blog Ekle</a>
+<a href="/Blog/addNewBlog/" class="btn btn-outline-warning">Yeni Blog Ekle</a>

@@ -1,8 +1,4 @@
-/*
-Author: W3layouts
-Author URL: http://w3layouts.com
- */
- html {
+html {
     scroll-behavior: smooth;
 }
 
@@ -168,7 +164,7 @@ button:hover {
     position: relative;
     min-height: 100vh;
     z-index: 0;
-    background: #0568C1;
+    background: #b47e13;
     padding: 40px 40px;
     justify-content: center;
     display: grid;
@@ -238,12 +234,13 @@ p.account, p.account a {
     color: #333;
 }
 
-p.account a{
-    color:#0568C1;
-}
-p.account a:hover {
-    text-decoration: underline;
-}
+    p.account a {
+        color: #333;
+    }
+        p.account a:hover {
+            text-decoration: none;
+            color: #b47e13;
+        }
 .w3l-hotair-form h1 {
     text-align: center;
     font-size: 40px;
@@ -256,7 +253,7 @@ p.account a:hover {
     line-height: 40px;
     margin-bottom: 5px;
     font-weight: 900;
-    color: #272346;
+    color: #b47e13;
     text-align: center;
 }
 
@@ -288,7 +285,7 @@ p.account a:hover {
     font-size: 18px;
     color: #fff;
     width: 100%;
-    background: #0568C1;
+    background: #b47e13;
     border: none;
     padding: 14px 15px;
     font-weight: 700;
@@ -299,9 +296,9 @@ p.account a:hover {
     -o-transition: .3s ease;
 }
 
-.w3l-hotair-form button:hover {
-    background: #fdc500;
-}
+    .w3l-hotair-form button:hover {
+        background: #b47e13;
+    }
 
 .w3l-hotair-form .social-icons ul li {
     list-style: none;

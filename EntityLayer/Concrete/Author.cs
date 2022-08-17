@@ -36,6 +36,9 @@ namespace EntityLayer.Concrete
         [StringLength(40)]
         public string phoneNumber { get; set; }
 
+        [StringLength(150)]
+        public string cv { get; set; }
+
         // İlişki türü olduğu için burada herhangi bir attribute kullanılmaz.
         public ICollection<Blog> blogs { get; set; }
     }

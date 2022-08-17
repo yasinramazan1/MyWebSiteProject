@@ -24,3 +24,4 @@ D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.m
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.mig8.resources
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.mig9.resources
 D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.mig10.resources
+D:\yasinramazangokWebSite\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.mig11.resources

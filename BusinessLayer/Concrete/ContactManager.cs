@@ -14,7 +14,7 @@ namespace BusinessLayer.Concrete
 
         public int BLContactAdd(Contact c)
         {
-            if (c.mail == "" || c.message == "" || c.name == "" || c.surName == "" || c.subject == "" || c.mail.Length <= 10 || c.subject.Length <= 3)
+            if (c.mail == "" || c.message == "" || c.name == "" || c.surName == "" || c.subject == "")
             {
                 return -1;
             }

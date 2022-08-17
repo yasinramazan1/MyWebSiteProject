@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 // Controller'larda amaç şart yazmamaktır, var olan metodu çağırıp çalıştırmaktır!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 namespace yasinramazangokWebSiteProject.Controllers
 {
@@ -32,13 +33,14 @@ namespace yasinramazangokWebSiteProject.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public PartialViewResult leaveComment(Comment c)
+        public ActionResult leaveComment(Comment c)
         {
             // Bu metot ile bir bloğa yorum yapabiliyoruz.
             c.status = true; // Bir yorum yapıldığında otomatik olarak veri tabanına true kaydedilmesi ve anında blogların altında görülmesi için bu tanım yapıldı.
             commentManager.commentAdd(c);
-            return PartialView();
+            return RedirectToAction("blogCommentList");
         }
+
 
         public ActionResult adminCommentListTrue()
         {

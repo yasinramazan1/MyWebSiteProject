@@ -1,13 +1,33 @@
 ﻿<!-- Bir bloğa tıklandığında ilk gelen büyük cover resmi ve bloğun başlığı olan partial burasıdır. -->
 @model IEnumerable<EntityLayer.Concrete.Blog>
+@{ string color = "";}
 @foreach (var item in Model)
 {
+    if (item.category.name == "Yazılım")
+    {
+        color = "post-category text-white bg-warning mb-3";
+    }
+
+    if (item.category.name == "Teknoloji")
+    {
+        color = "post-category text-white bg-success mb-3";
+    }
+
+    if (item.category.name == "Uzay")
+    {
+        color = "post-category text-white bg-primary mb-3";
+    }
+
+    if (item.category.name == "Havacılık")
+    {
+        color = "post-category text-white bg-info mb-3";
+    }
     <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('@item.image');">
         <div class="container">
             <div class="row same-height justify-content-center">
                 <div class="col-md-12 col-lg-10">
                     <div class="post-entry text-center">
-                        <span class="post-category text-white bg-warning mb-3">@item.category.name</span>
+                        <span class="@color">@item.category.name</span>
                         <h1 class="mb-4"><a href="#">@item.title</a></h1>
                         <div class="post-meta align-items-center text-center">
                             <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="@item.author.image" alt="Image" class="img-fluid"></figure>

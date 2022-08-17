@@ -31,7 +31,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult sendMessage(Contact p)
         {
             contactManager.BLContactAdd(p);
-            return View();
+            return RedirectToAction("sendMessage");
         }
 
         public ActionResult inbox()

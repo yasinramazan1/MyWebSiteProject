@@ -176,6 +176,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             ViewBag.values2 = values2;
             return View();
         }
+
         [HttpPost]
         public ActionResult addNewBlog(Blog b)
         {

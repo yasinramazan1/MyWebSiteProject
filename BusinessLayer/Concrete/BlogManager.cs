@@ -49,7 +49,7 @@ namespace BusinessLayer.Concrete
 
         public int blogAddBL(Blog p)
         {
-            if (p.title == "" || p.image == "" || p.title.Length <= 5 || p.content.Length <= 200)
+            if (p.title == "" || p.image == "" || p.title.Length <= 5 || p.content.Length <= 100)
             {
                 return -1;
             }

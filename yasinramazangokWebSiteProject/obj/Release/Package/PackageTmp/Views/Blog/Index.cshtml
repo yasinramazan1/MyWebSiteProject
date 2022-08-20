@@ -1,0 +1,16 @@
+﻿<!-- SİTENİN ANA SAYFASI -->
+<!-- Ana sayfada internet bağlantısı olmadan link verilen fotoğraflar görünmez. -->
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    <!-- Bu sayfa benim oluşturduğum ana layout'u temel alır. -->
+}
+<!-- Burası projenin ana index'idir yani BlogController'ın Index metodunun view'ıdır.
+     Proje bir nevi buradan başlar diyebiliriz.
+     Ve aynı zamanda aslında burası bir köprüdür. Diğer partial'ların toplandığı yerdir...
+-->
+@Html.Action("featuredBlogs", "Blog") 
+@Html.Action("blogList", "Blog")    
+@*@Html.Action("otherFeaturedBlogs", "Blog")*@
+@Html.Action("addMail", "SubscribeMail")
+@Html.Action("footer", "About") <!-- Projenin footer kısmı AboutController'ın içine yerleştirildi. Farklı bir controller'daki partial'ı da burada görüntüleyebildik. -->

@@ -1,0 +1,71 @@
+﻿<!-- Burası iletişim sayfasının görüntülenmesini sağlamaktadır. -->
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/miniblog/images/img_4.jpg');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                    <h1 class="">Henüz tanışmadık...</h1>
+                    <p class="lead mb-4 text-white">Yeni insanlarla tanışmayı ve iş birliğini seviyoruz, 'pair teaching' yapmak için tanışalım...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 mb-5">
+                <form method="post" class="p-5 bg-white">
+                    <div class="row form-group">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Adınız</label>
+                            <input type="text"  name="name" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-black" for="lname">Soyadınız</label>
+                            <input type="text"  name="surName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="email">Email</label>
+                            <input type="email"  name="mail" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="subject">Konu</label>
+                            <input type="text"  name="subject" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="message">Mesajınız</label>
+                            <textarea name="message"  cols="30" rows="7" class="form-control" placeholder="Lütfen mesajınızı bizimle paylaşın..."></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="Mesajınızı Gönderin" class="btn btn-outline-warning btn-sm rounded px-4 py-2">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <div class="p-4 mb-3 bg-white">
+                    <p class="mb-0 font-weight-bold">Adresim</p>
+                    <p class="mb-4">Elazığ Fırat Üniversitesi, Teknoloji Fakültesi, Yazılım Mühendisliği Bölümü</p>
+                    <p class="mb-0 font-weight-bold">Telefonum</p>
+                    <p class="mb-4">+90 544 446 6830</p>
+                    <p class="mb-0 font-weight-bold">Email Adresim</p>
+                    <p class="mb-0">yasinrmzngok@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("footer", "About")

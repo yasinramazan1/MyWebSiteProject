@@ -1,0 +1,12 @@
+D:\yasinramazangokWebSite\EntityLayer\bin\Release\EntityLayer.dll.config
+D:\yasinramazangokWebSite\EntityLayer\bin\Release\EntityLayer.dll
+D:\yasinramazangokWebSite\EntityLayer\bin\Release\EntityLayer.pdb
+D:\yasinramazangokWebSite\EntityLayer\bin\Release\EntityFramework.dll
+D:\yasinramazangokWebSite\EntityLayer\bin\Release\EntityFramework.SqlServer.dll
+D:\yasinramazangokWebSite\EntityLayer\bin\Release\EntityFramework.xml
+D:\yasinramazangokWebSite\EntityLayer\bin\Release\EntityFramework.SqlServer.xml
+D:\yasinramazangokWebSite\EntityLayer\obj\Release\EntityLayer.csproj.AssemblyReference.cache
+D:\yasinramazangokWebSite\EntityLayer\obj\Release\EntityLayer.csproj.CoreCompileInputs.cache
+D:\yasinramazangokWebSite\EntityLayer\obj\Release\EntityLayer.csproj.CopyComplete
+D:\yasinramazangokWebSite\EntityLayer\obj\Release\EntityLayer.dll
+D:\yasinramazangokWebSite\EntityLayer\obj\Release\EntityLayer.pdb

@@ -1,0 +1,53 @@
+﻿<!-- FOOTER VİEW -->
+@model IEnumerable<EntityLayer.Concrete.About>
+<div class="site-footer">
+    <div class="container">
+        <div class="row mb-5">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <h3 class="footer-heading mb-4">Hakkımda</h3>
+                    <p>@item.content1</p>
+                </div>
+            }
+            <div class="col-md-3 ml-auto">
+                <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
+                <ul class="list-unstyled float-left mr-5">
+                    <li><a href="/About/Index/">Hakkımda</a></li>
+                    <li><a href="/Contact/Index/">İletişim</a></li>
+                    <li><a href="/Blog/Index/">Ana Sayfa</a></li>
+                    <li><a href="/Login/authorLogin/">Yazar Girişi</a></li>
+                </ul>
+                <ul class="list-unstyled float-left">
+                    <li><a href="/Blog/blogByCategory/1">Yazılım</a></li>
+                    <li><a href="/Blog/blogByCategory/2">Teknoloji</a></li>
+                    <li><a href="/Blog/blogByCategory/3">Uzay</a></li>
+                    <li><a href="/Blog/blogByCategory/4">Havacılık</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h3 class="footer-heading mb-4">Benimle iletişime geçebilirsiniz</h3>
+                    <p>
+                        <a href="https://github.com/yasinramazan1"><span class="icon-github p-2"></span></a>
+                        <a href="https://instagram.com/yrg0111"><span class="icon-instagram p-2"></span></a>
+                        <a href="https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BUzjUkWd4TpWhdC19T2qmSg%3D%3D"><span class="icon-linkedin p-2"></span></a>
+                        <a href="/Contact/sendMessage/"><span class="icon-envelope p-2"></span></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved. | Designed by <a href="/Blog/Index"><strong>Yasin Ramazan GÖK</strong></a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

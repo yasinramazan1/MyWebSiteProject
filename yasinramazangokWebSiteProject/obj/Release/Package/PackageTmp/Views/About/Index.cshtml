@@ -1,0 +1,72 @@
+﻿<!-- Bu view ile hakkımızda sayfasının görüntülenmesi sağlanmaktadır! -->
+@model IEnumerable<EntityLayer.Concrete.About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/miniblog/images/img_4.jpg');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                    <h1 class="">Hakkımda</h1>
+                    <p class="lead mb-4 text-white">Başarının bedelini bir dönem için ödemeyenler, başaramamamın bedelini bir ömür boyu öderler!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 order-md-2">
+                    <img src="@item.image1" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-5 mr-auto order-md-1">
+                    <h2>Ben...</h2>
+
+                    <p>@item.content1</p>
+                    <ul class="ul-check list-unstyled success">
+                        <li>Turuncu!</li>
+                        <li>Vizyoner!</li>
+                    </ul>
+
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Action("meetTheTeam", "About")
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <img src="@item.image2" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-5 ml-auto">
+                    <h2>Neler Yapıyorum?</h2>
+
+                    <p class="mb-4">@item.content2</p>
+
+                    <ul class="ul-check list-unstyled success">
+                        <li>Yazılıma yön veren bilgisayar bilimcileri!</li>
+                        <li>Teknoloji haberleri!</li>
+                        <li>Programlama dilleri ve daha fazlası!</li>
+                    </ul>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*@Html.Action("mailSubscribe", "Blog")*@
+@Html.Action("footer", "About")

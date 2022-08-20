@@ -1,0 +1,13 @@
+﻿<!-- Bir bloğa tıklandığında içeriğinin görüntülendiği yani bir bloğun görüntülendiği partial burasıdır. -->
+@model IEnumerable<EntityLayer.Concrete.Blog>
+@foreach (var item in Model)
+{
+    <div class="post-content-body">
+        <p>@item.content</p>
+        <div class="row mb-5 mt-5">
+            <div class="col-md-12 mb-4">
+                <img src="@item.image" alt="Image placeholder" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+}

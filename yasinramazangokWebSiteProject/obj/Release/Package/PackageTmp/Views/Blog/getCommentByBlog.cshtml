@@ -1,0 +1,74 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+@{
+    ViewBag.Title = "getCommentByBlog";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@*<h2>Bloğa ait yorumlar</h2>
+    <br />*@
+<!--<table class="table table-bordered">
+    <tr>
+        <th>Kullanıcı</th>
+        <th>Yorum</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.userName</td>
+                    <td>@item.text</td>
+                </tr>
+            }
+</table>-->
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+       <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <!-- Timelime example  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- The time line -->
+                        <div class="timeline">
+                            @foreach (var item in Model)
+                            {
+                            <!-- timeline time label -->
+                            <div class="time-label">
+                                <span class="bg-yellow">@(((DateTime)item.commentDate).ToString("dd-MMM-yyyy"))</span>
+                            </div>
+                            <!-- /.timeline-label -->
+                            <!-- timeline item -->
+                            <div>
+                                <i class="fas fa-comment bg-green"></i>
+                                <div class="timeline-item">
+                                    @*<span class="time"><i class="fas fa-clock"></i> 12:05</span> Saat kısmı ilerleyen zamanlarda oluşturulacak. *@
+                                    <h3 class="timeline-header"><a href="#">@item.userName</a> @item.mail</h3>
+
+                                    <div class="timeline-body">
+                                        @item.text
+                                    </div>
+                                    <div class="timeline-footer">
+                                        <a class="btn btn-primary btn-sm">Detaylar</a>
+                                        <a class="btn btn-danger btn-sm">Yorumu Sil</a>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                            <!-- END timeline item -->
+                        </div>
+
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.timeline -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+        <!-- /.content-wrapper -->
+</body>
+</html>

@@ -93,3 +93,9 @@ D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\PagedList.dll
 D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\PagedList.xml
 D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\PagedList.Mvc.dll
 D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\PagedList.Mvc.xml
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\FluentValidation.dll
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\System.Threading.Tasks.Extensions.dll
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\FluentValidation.xml
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\System.Threading.Tasks.Extensions.xml
+D:\yasinramazangokWebSite\yasinramazangokWebSiteProject\bin\System.Runtime.CompilerServices.Unsafe.xml

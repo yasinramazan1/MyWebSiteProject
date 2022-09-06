@@ -36,28 +36,28 @@ namespace BusinessLayer.Concrete
             return repoComment.list(x => x.status == false);
         }
 
-        public int commentAdd(Comment c)
+        public void commentAdd(Comment c)
         {
             // Bir bloğa yorum ekleme metodu
-            if (c.text.Length <= 4 || c.text.Length >= 401 || c.userName == "" || c.mail == "")
-            {
-                return -1;
-            }
-            return repoComment.insert(c);
+            //if (c.text.Length <= 4 || c.text.Length >= 401 || c.userName == "" || c.mail == "")
+            //{
+            //    return -1;
+            //}
+            repoComment.insert(c);
         }
 
-        public int commentStatusChangeToFalse(int id)
+        public void commentStatusChangeToFalse(int id)
         {
             Comment comment = repoComment.find(x => x.id == id);
             comment.status = false;
-            return repoComment.update(comment);
+            repoComment.update(comment);
         }
 
-        public int commentStatusChangeToTrue(int id)
+        public void commentStatusChangeToTrue(int id)
         {
             Comment comment = repoComment.find(x => x.id == id);
             comment.status = true;
-            return repoComment.update(comment);
+            repoComment.update(comment);
         }
 
     }

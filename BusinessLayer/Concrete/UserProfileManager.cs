@@ -27,7 +27,7 @@ namespace BusinessLayer.Concrete
             return repoUserBlog.list(x => x.authorId == id);
         }
 
-        public int editAuthor(Author p)
+        public void editAuthor(Author p)
         {
             Author author = repoUser.find(x => x.id == p.id);
             author.name = p.name;
@@ -38,7 +38,7 @@ namespace BusinessLayer.Concrete
             author.phoneNumber = p.phoneNumber;
             author.aboutShort = p.aboutShort;
             author.about = p.about;
-            return repoUser.update(author);
+            repoUser.update(author);
         }
     }
 }

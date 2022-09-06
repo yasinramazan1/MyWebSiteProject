@@ -47,20 +47,20 @@ namespace BusinessLayer.Concrete
             return repoBlog.list(x => x.categoryId == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
         }
 
-        public int blogAddBL(Blog p)
+        public void blogAddBL(Blog p)
         {
-            if (p.title == "" || p.image == "" || p.title.Length <= 5 || p.content.Length <= 100)
-            {
-                return -1;
-            }
-            return repoBlog.insert(p);
+            //if (p.title == "" || p.image == "" || p.title.Length <= 5 || p.content.Length <= 100)
+            //{
+            //    return -1;
+            //}
+            repoBlog.insert(p);
         }
 
-        public int deleteBlogBL(int p)
+        public void deleteBlogBL(int p)
         {
             // id'ye göre ilgili bloğu silen metot burasıdır.   
             Blog blog = repoBlog.find(x => x.id == p);
-            return repoBlog.delete(blog);
+           repoBlog.delete(blog);
         }
 
         public Blog findBlog(int id)
@@ -68,7 +68,7 @@ namespace BusinessLayer.Concrete
             return repoBlog.find(x => x.id == id);
         }
 
-        public int updateBlog(Blog p)
+        public void updateBlog(Blog p)
         {
             Blog blog = repoBlog.find(x => x.id == p.id);
             blog.title = p.title;   
@@ -77,7 +77,7 @@ namespace BusinessLayer.Concrete
             blog.content = p.content;
             blog.categoryId = p.categoryId;
             blog.image = p.image;
-            return repoBlog.update(blog);
+            repoBlog.update(blog);
         }
     }
 }

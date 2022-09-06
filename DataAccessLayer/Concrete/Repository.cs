@@ -15,7 +15,7 @@ namespace DataAccessLayer.Concrete
     public class Repository<T> : IRepository<T> where T : class
     {
         // Bir sınıfa bir interface implemente etmek istersek, bu interface içerisindeki bütün metotları bu sınıf içerisinde implemente etmeli yani "Overriding" yapmalıyız.
-       
+
         // Sınıflara yani sınıfların türetildiği sınıfa erişim sağlayabilmek için Context sınıfından bir nesne türetilmelidir.
         Context context = new Context();
         DbSet<T> _object; // Bu _object değişkeni bizim dışarıdan göndereceğimiz değerlere karşılık gelecektir. Bu Author, Comment, Contact vb. olabilir.
@@ -26,10 +26,11 @@ namespace DataAccessLayer.Concrete
             _object = context.Set<T>(); // Context üzerinden gönderilen sınıfı _object field'ına atama işlemi
         }
 
-        public int delete(T p)
+        public void delete(T p)
         {
-            _object.Remove(p);  
-            return context.SaveChanges();
+            var deleteEntity = context.Entry(p);
+            deleteEntity.State = EntityState.Deleted;
+            context.SaveChanges();
         }
 
         public T getById(int id)
@@ -37,10 +38,11 @@ namespace DataAccessLayer.Concrete
             return _object.Find(id);
         }
 
-        public int insert(T p)
+        public void insert(T p)
         {
-            _object.Add(p);
-            return context.SaveChanges();
+            var addedEntity = context.Entry(p);
+            addedEntity.State = EntityState.Added;
+            context.SaveChanges();
         }
 
         public List<T> list()
@@ -63,9 +65,11 @@ namespace DataAccessLayer.Concrete
             return _object.Where(filter).ToList();
         }
 
-        public int update(T p)
+        public void update(T p)
         {
-            return context.SaveChanges();   
+            var updateEntity = context.Entry(p);
+            updateEntity.State = EntityState.Modified;
+            context.SaveChanges();
         }
 
         public T find(Expression<Func<T, bool>> where)

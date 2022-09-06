@@ -13,3 +13,9 @@ D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\EntityLayer.pdb
 D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\EntityLayer.dll.config
 D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\EntityFramework.xml
 D:\yasinramazangokWebSite\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\FluentValidation.dll
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\FluentValidation.xml
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\yasinramazangokWebSite\BusinessLayer\bin\Debug\System.Threading.Tasks.Extensions.xml

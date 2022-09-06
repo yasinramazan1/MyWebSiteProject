@@ -11,13 +11,13 @@ namespace BusinessLayer.Concrete
     public class SubscribeMailManager
     {
         Repository<SubscribeMail> repoSubscribeMail = new Repository<SubscribeMail>();
-        public int BLAdd(SubscribeMail p)
+        public void BLAdd(SubscribeMail p)
         {
-            if (p.mail.Length <= 11 || p.mail.Length >= 50 )
-            {
-                return -1;
-            }
-            return repoSubscribeMail.insert(p);
+            //if (p.mail.Length <= 11 || p.mail.Length >= 50 )
+            //{
+            //    return -1;
+            //}
+            repoSubscribeMail.insert(p);
         }
     }
 }

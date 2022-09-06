@@ -17,11 +17,11 @@ namespace DataAccessLayer.Abstract
 
         // Ekleme işleminin int olması, C#'ta ExecuteNoneQuery() metodunun etkilenen kayıt sayısı olarak geriye bir int türünde değer döndürmesindendir.
         // T nesnesinden türetilen parametreleri eklemek için aşağıdaki gibi parametre girilir.
-        int insert(T p);
+        void insert(T p);
 
-        int update(T p);
+        void update(T p);
 
-        int delete(T p);
+        void delete(T p);
 
         T getById(int id); // Güncelleme işlemlerinde kullanılan metottur!
         // id'yi getirme metodu, yani bir örneğin kategorinin bloğuna erişmek için öncelikle o kategorinin id'sini getirmek için tanımlanmıştır.

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IAuthorService
     {
-        ist<About> getList();
-        void aboutAdd(About about);
-        About getById(int id);
-        void updateAbout(About about);
-        void deleteAbout(About about);
+        List<Author> getList();
+        void authorAdd(Author author);
+        Author getById(int id);
+        void updateAuthor(Author author);
+        void deleteAuthor(Author author);
     }
 }

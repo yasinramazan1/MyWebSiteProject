@@ -18,15 +18,15 @@ namespace BusinessLayer.Concrete
             return repoAuthor.list(); // Repository'deki metotları çağırabiliyoruz.
         }
 
-        public int addNewAuthorBL(Author p)
+        public void addNewAuthorBL(Author p)
         {
             // Bu metot ile yeni yazar ekleme işlemi yapılabilmektedir.
             // if bloğunda parametreden gönderilen değerlerin geçerliliğini kontrol ediyoruz.
-            if(p.name=="" || p.aboutShort=="" || p.job == "")
-            {
-                return -1;
-            }
-            return repoAuthor.insert(p);
+            //if(p.name=="" || p.aboutShort=="" || p.job == "")
+            //{
+            //    return -1;
+            //}
+            repoAuthor.insert(p);
         }
 
         public Author findAuthor(int id)
@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
             return repoAuthor.find(x => x.id == id);
         }
 
-        public int editAuthor(Author p)
+        public void editAuthor(Author p)
         {
             Author author = repoAuthor.find(x => x.id == p.id);
             author.name = p.name;
@@ -46,7 +46,7 @@ namespace BusinessLayer.Concrete
             author.phoneNumber = p.phoneNumber;
             author.aboutShort = p.aboutShort;
             author.about = p.about;
-            return repoAuthor.update(author); 
+            repoAuthor.update(author);
         }
     }
 }

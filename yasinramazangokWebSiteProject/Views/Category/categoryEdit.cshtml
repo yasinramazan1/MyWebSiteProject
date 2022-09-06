@@ -9,9 +9,11 @@
     <br />
     @Html.Label("Kategori Adı")
     @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.name)
     <br />
     @Html.Label("Kategori Açıklaması")
     @Html.TextBoxFor(x => x.description, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.description)
     <br />
     <button class="btn btn-success">Güncelle</button>
 </form>

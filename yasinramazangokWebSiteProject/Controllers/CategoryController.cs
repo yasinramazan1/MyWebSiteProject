@@ -1,5 +1,8 @@
 ﻿using BusinessLayer.Concrete; // CategoryManager sınıfını BusinessLayer katmanından çağırabilmek için gerekli kütüphane
+using BusinessLayer.ValidationRules;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +15,8 @@ namespace yasinramazangokWebSiteProject.Controllers
     {
         // GET: Category
 
-        CategoryManager categoryManager = new CategoryManager();
-        public ActionResult Index()
-        {
-            // Bu Index metodunun "view"ında biz HTML-CSS kodları ile bu metodun yaptığı işi kullanıcıya sunuyoruz.
-            // Bu metot ile kategorileri listeliyoruz.
-            var categoryValues = categoryManager.getAll();
-            return View(categoryValues);
-        }
-
+        CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+        
         [AllowAnonymous]
         public PartialViewResult categoryListInBlogDetails()
         {
@@ -47,15 +43,29 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult addCategoryOnAdmin(Category p)
         {
             // Admin panelinde yeni kategori ekleme 
-            categoryManager.categoryAddBL(p);
-            return RedirectToAction("adminCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+            if (results.IsValid)
+            {
+                categoryManager.categoryAdd(p);
+                return RedirectToAction("adminCategoryList");
+            }
+            else
+            {
+                foreach(var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+            
         }
 
         [HttpGet]
         public ActionResult categoryEdit(int id)
         {
             // Admin panelinde kategorileri düzenleme
-            Category category = categoryManager.findCategory(id);
+            Category category = categoryManager.getById(id);
             return View(category);
         }
 
@@ -63,8 +73,21 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult categoryEdit(Category p)
         {
             // Admin panelinde kategorileri düzenleme
-            categoryManager.editCategory(p);
-            return RedirectToAction("adminCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+            if (results.IsValid)
+            {
+                categoryManager.updateCategory(p);
+                return RedirectToAction("adminCategoryList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();      
         }
 
         public ActionResult changeStatusFalse(int id)
@@ -76,7 +99,7 @@ namespace yasinramazangokWebSiteProject.Controllers
 
         public ActionResult changeStatusTrue(int id)
         {
-            // Admin panelinde kategorileri pasif yapma
+            // Admin panelinde kategorileri aktif yapma
             categoryManager.changeCategoryStatusToTrue(id);
             return RedirectToAction("adminCategoryList");
         }

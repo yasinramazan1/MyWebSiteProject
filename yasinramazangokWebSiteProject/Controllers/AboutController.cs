@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -32,8 +33,8 @@ namespace yasinramazangokWebSiteProject.Controllers
         {
             // Hakkımızda sayfasındaki takımımızla tanışın bölümünün görüntülenmesi bu metot ile sağlanmaktadır.
             // Hakkımızda sayfasının index bölümünde yazmadık çünkü buradaki bölümü veri tabanında farklı bir tablodan çektiğimiz için.
-            AuthorManager authorManager = new AuthorManager();  
-            var authorList = authorManager.getAll();
+            AuthorManager authorManager = new AuthorManager(new EfAuthorDal());  
+            var authorList = authorManager.getList();
             return PartialView(authorList);
         }
 

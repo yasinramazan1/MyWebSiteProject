@@ -6,18 +6,18 @@
 <form class="form-group" method="post">
     @Html.Label("Yazar Adı")
     @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.name)
     <br />
     @Html.Label("Yazarın Resmi")
     @Html.TextBoxFor(x => x.image, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.image)
     <br />
-    @*@Html.Label("Kategori")
-        @Html.DropDownListFor(x => x.categoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
-        <br />*@
     @Html.Label("Yazarın Mesajı")
     @Html.TextBoxFor(x => x.aboutShort, new { @class = "form-control" })
     <br />
     @Html.Label("Yazarın Mesleği")
     @Html.TextBoxFor(x => x.job, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.job)
     <br />
     @Html.Label("Mail Adresi")
     @Html.TextBoxFor(x => x.mail, new { @class = "form-control" })
@@ -30,6 +30,7 @@
     <br />
     @Html.Label("Yazar Hakkında")
     @Html.TextAreaFor(x => x.about, 5, 20, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.about)
     <br />
     <button class="btn btn-warning">Kaydet</button>
 </form>

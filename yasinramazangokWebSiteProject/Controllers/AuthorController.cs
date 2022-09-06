@@ -1,5 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +15,7 @@ namespace yasinramazangokWebSiteProject.Controllers
     {
         // GET: Author
         BlogManager blogManager = new BlogManager();
-        AuthorManager authorManager = new AuthorManager();
+        AuthorManager authorManager = new AuthorManager(new EfAuthorDal());
 
         [AllowAnonymous]
         public PartialViewResult authorAbout(int id)
@@ -34,7 +37,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult authorList()
         {
             // Yazar listesini döndüren metot
-            var authorLists = authorManager.getAll();
+            var authorLists = authorManager.getList();
             return View(authorLists);
         }
 
@@ -48,22 +51,50 @@ namespace yasinramazangokWebSiteProject.Controllers
         [HttpPost]
         public ActionResult addNewAuthor(Author p)
         {
-            authorManager.addNewAuthorBL(p);
-            return RedirectToAction("authorList");
+            AuthorValidator categoryValidator = new AuthorValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+            if (results.IsValid)
+            {
+
+                authorManager.authorAdd(p);
+                return RedirectToAction("authorList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
 
         [HttpGet]
         public ActionResult authorEdit(int id)
         {
-            Author author = authorManager.findAuthor(id);
+            Author author = authorManager.getById(id);
             return View(author);
         }
 
         [HttpPost]
         public ActionResult authorEdit(Author p)
         {
-            authorManager.editAuthor(p);
-            return RedirectToAction("authorList");
+            AuthorValidator categoryValidator = new AuthorValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+            if (results.IsValid)
+            {
+                authorManager.updateAuthor(p);
+                return RedirectToAction("authorList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+            
         }
     }
 }

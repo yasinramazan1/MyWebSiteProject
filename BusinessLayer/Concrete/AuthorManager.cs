@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,45 +10,40 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class AuthorManager
+    public class AuthorManager:IAuthorService
     {
+        IAuthorDal authorDal;
+
         Repository<Author> repoAuthor = new Repository<Author>();
 
-        public List<Author> getAll()
+        public AuthorManager(IAuthorDal authorDal)
         {
-            // Sitedeki bütün yazarları liste halinde döndüren metot budur.
-            return repoAuthor.list(); // Repository'deki metotları çağırabiliyoruz.
+            this.authorDal = authorDal;
         }
 
-        public void addNewAuthorBL(Author p)
+        public List<Author> getList()
         {
-            // Bu metot ile yeni yazar ekleme işlemi yapılabilmektedir.
-            // if bloğunda parametreden gönderilen değerlerin geçerliliğini kontrol ediyoruz.
-            //if(p.name=="" || p.aboutShort=="" || p.job == "")
-            //{
-            //    return -1;
-            //}
-            repoAuthor.insert(p);
+            return authorDal.list();
         }
 
-        public Author findAuthor(int id)
+        public void authorAdd(Author author)
         {
-            // Yazarı id değerine göre edit sayfasına taşıma
-            return repoAuthor.find(x => x.id == id);
+            authorDal.insert(author);
         }
 
-        public void editAuthor(Author p)
+        public Author getById(int id)
         {
-            Author author = repoAuthor.find(x => x.id == p.id);
-            author.name = p.name;
-            author.image = p.image;
-            author.job = p.job;
-            author.password = p.password;
-            author.mail = p.mail;
-            author.phoneNumber = p.phoneNumber;
-            author.aboutShort = p.aboutShort;
-            author.about = p.about;
-            repoAuthor.update(author);
+            return authorDal.getById(id);   
+        }
+
+        public void updateAuthor(Author author)
+        {
+             authorDal.update(author);
+        }
+
+        public void deleteAuthor(Author author)
+        {
+            throw new NotImplementedException();
         }
     }
 }

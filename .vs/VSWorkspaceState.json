@@ -1,6 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BusinessLayer",
+    "\\BusinessLayer\\Concrete",
+    "\\yasinramazangokWebSiteProject",
+    "\\yasinramazangokWebSiteProject\\AdminLTE-3.0.4",
+    "\\yasinramazangokWebSiteProject\\AdminLTE-3.0.4\\plugins",
+    "\\yasinramazangokWebSiteProject\\Controllers",
+    "\\yasinramazangokWebSiteProject\\Views",
+    "\\yasinramazangokWebSiteProject\\Views\\Blog"
   ],
+  "SelectedNode": "\\yasinramazangokWebSiteProject\\Views\\Blog\\featuredBlogs.cshtml",
   "PreviewInSolutionExplorer": false
 }

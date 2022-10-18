@@ -56,6 +56,8 @@
     <Compile Include="Abstract\ICategoryService.cs" />
     <Compile Include="Abstract\ICommentService.cs" />
     <Compile Include="Abstract\IContactService.cs" />
+    <Compile Include="Abstract\IGenericService.cs" />
+    <Compile Include="Abstract\IMailService.cs" />
     <Compile Include="Concrete\AboutManager.cs" />
     <Compile Include="Concrete\AuthorManager.cs" />
     <Compile Include="Concrete\BlogManager.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="ValidationRules\AuthorValidator.cs" />
     <Compile Include="ValidationRules\BlogValidator.cs" />
     <Compile Include="ValidationRules\CategoryValidator.cs" />
+    <Compile Include="ValidationRules\ContactValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">

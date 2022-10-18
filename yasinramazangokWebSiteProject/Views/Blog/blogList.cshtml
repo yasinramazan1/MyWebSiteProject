@@ -41,12 +41,12 @@
                             <h2><a href="/Blog/blogDetails/@item.id">@item.title</a></h2>
                             <div class="post-meta align-items-center text-left clearfix">
                                 <figure class="author-figure mb-0 mr-3 float-left"><img src="@item.author.image" alt="Image" class="img-fluid"></figure>
-                                <span class="d-inline-block mt-1"><a href="/Blog/Index/">@item.author.name</a></span>
+                                <span class="d-inline-block mt-1">@item.author.name</span>
                                 <span>&nbsp;-&nbsp; @(((DateTime)item.date).ToString("dd-MMM-yyyy"))</span>
                                 Puan: @item.blogRating
                             </div>
                             <p>@item.content.Substring(0, item.content.Substring(0, 200).LastIndexOf(" "))...</p>
-                            <p><a href="/BLog/blogDetails/@item.id">Devamını Oku</a></p>
+                            <p><a href="/Blog/blogDetails/@item.id">Devamını Oku</a></p>
                         </div>
                     </div>
                 </div>

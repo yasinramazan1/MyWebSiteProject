@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,24 +10,40 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class AboutManager
+    public class AboutManager : IAboutService
     {
+        IAboutDal _aboutDal;
+
         Repository<About> repoAbout = new Repository<About>();
 
-        public List<About> getAll()
+        public AboutManager(IAboutDal aboutDal)
         {
-            return repoAbout.list(); // Repository'deki metotları çağırabiliyoruz.
+            _aboutDal = aboutDal;
+        }    
+
+        public void deleteT(About t)
+        {
+            throw new NotImplementedException();
         }
 
-        public void updateAboutBM(About p)
+        public About getById(int id)
         {
-            About about = repoAbout.find(x => x.id== p.id);
-            about.content1 = p.content1;
-            about.content2 = p.content2;
-            about.image1 = p.image1;
-            about.image2 = p.image2;
-            about.id = p.id;
-            repoAbout.update(about);
+            throw new NotImplementedException();
+        }
+
+        public List<About> getList()
+        {
+            return _aboutDal.list();
+        }
+
+        public void TAdd(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateT(About t)
+        {
+            _aboutDal.update(t);
         }
     }
 }

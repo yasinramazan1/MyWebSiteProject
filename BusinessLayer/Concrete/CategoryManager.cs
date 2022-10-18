@@ -12,36 +12,32 @@ namespace BusinessLayer.Concrete
 {
     public class CategoryManager: ICategoryService
     {
+        // ICategoryService'ı implemente ettik. 
         // Verilerin süzgeçten geçirildiği katman bu Manager sınıflarıdır!!!
         // Repository, IRepository'de CRUD işlemlerini implemente eden sınıftı.
-        Repository<Category> repoCategory = new Repository<Category>(); // Burada veri listeleme işlemini Repository sınıfına bağlı olarak gerçekleştiriyoruz.
-
-        ICategoryDal _categoryDal;
+       
+        ICategoryDal _categoryDal; // Field tanımlama
 
         public CategoryManager(ICategoryDal categoryDal)
         {
+            // Generate Constructor bu metottur.
             _categoryDal = categoryDal;
-        }
-
-        public List<Category> getAll()
-        {
-            return repoCategory.list(); // Repository'deki metotları çağırabiliyoruz.
         }
 
         public void changeCategoryStatusToFalse(int id)
         {
             // Admin panelinde kategorileri pasif yapma
-            Category category = repoCategory.find(x => x.id == id);
+            Category category = _categoryDal.find(x => x.id == id);
             category.status = false;
-            repoCategory.update(category);
+            _categoryDal.update(category);
         }
 
         public void changeCategoryStatusToTrue(int id)
         {
             // Admin panelinde kategorileri pasif yapma
-            Category category = repoCategory.find(x => x.id == id);
+            Category category = _categoryDal.find(x => x.id == id);
             category.status = true;
-            repoCategory.update(category);
+            _categoryDal.update(category);
         }
 
         public List<Category> getList()
@@ -49,24 +45,24 @@ namespace BusinessLayer.Concrete
             return _categoryDal.list();
         }
 
-        public void categoryAdd(Category category)
-        {
-            _categoryDal.insert(category);
-        }
-
         public Category getById(int id)
         {
             return _categoryDal.getById(id);
         }
 
-        public void updateCategory(Category category)
+        public void TAdd(Category t)
         {
-            _categoryDal.update(category);
+            _categoryDal.insert(t);
         }
 
-        public void deleteCategory(Category category)
+        public void updateT(Category t)
         {
-            _categoryDal.delete(category);
+            _categoryDal.update(t);
+        }
+
+        public void deleteT(Category t)
+        {
+            _categoryDal.delete(t);
         }
     }
 }

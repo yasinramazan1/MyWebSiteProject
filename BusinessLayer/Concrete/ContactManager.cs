@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,28 +10,41 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class ContactManager
+    public class ContactManager : IContactService
     {
+
+        IContactDal _contactDal;
+
         Repository<Contact> repoContact = new Repository<Contact>();
 
-        public void BLContactAdd(Contact c)
+        public ContactManager(IContactDal contactDal)
         {
-            //if (c.mail == "" || c.message == "" || c.name == "" || c.surName == "" || c.subject == "")
-            //{
-            //    return -1;
-            //}
-            repoContact.insert(c); // Repository'deki metotları çağırabiliyoruz.
+            _contactDal = contactDal;
         }
 
-        public List<Contact> getAll()
+        public void deleteT(Contact t)
         {
-            return repoContact.list(); // Repository'deki metotları çağırabiliyoruz.
+            throw new NotImplementedException();
         }
 
-        public Contact getMessageDetails(int id)
+        public Contact getById(int id)
         {
-            // Dışarıdan gönderilen id parametresine veri tabanında denk gelen id'nin detaylarını getiren metot budur.
-            return repoContact.find(x => x.id == id);
+            return _contactDal.find(x => x.id == id);
+        }
+
+        public List<Contact> getList()
+        {
+            return _contactDal.list();
+        }
+
+        public void TAdd(Contact t)
+        {
+            _contactDal.insert(t);
+        }
+
+        public void updateT(Contact t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

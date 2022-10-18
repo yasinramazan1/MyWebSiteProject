@@ -12,36 +12,42 @@ namespace BusinessLayer.Concrete
 {
     public class AuthorManager:IAuthorService
     {
-        IAuthorDal authorDal;
+        IAuthorDal _authorDal;
 
         Repository<Author> repoAuthor = new Repository<Author>();
 
         public AuthorManager(IAuthorDal authorDal)
         {
-            this.authorDal = authorDal;
+            _authorDal = authorDal;
         }
 
         public List<Author> getList()
         {
-            return authorDal.list();
-        }
-
-        public void authorAdd(Author author)
-        {
-            authorDal.insert(author);
+            // Tüm yazarların listesini getirme
+            return _authorDal.list();
         }
 
         public Author getById(int id)
         {
-            return authorDal.getById(id);   
-        }
-
-        public void updateAuthor(Author author)
-        {
-             authorDal.update(author);
+            return _authorDal.getById(id);   
         }
 
         public void deleteAuthor(Author author)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TAdd(Author t)
+        {
+            _authorDal.insert(t);
+        }
+
+        public void updateT(Author t)
+        {
+            _authorDal.update(t);
+        }
+
+        public void deleteT(Author t)
         {
             throw new NotImplementedException();
         }

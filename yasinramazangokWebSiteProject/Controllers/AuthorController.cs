@@ -14,7 +14,7 @@ namespace yasinramazangokWebSiteProject.Controllers
     public class AuthorController : Controller
     {
         // GET: Author
-        BlogManager blogManager = new BlogManager();
+        BlogManager blogManager = new BlogManager(new EfBlogDal());
         AuthorManager authorManager = new AuthorManager(new EfAuthorDal());
 
         [AllowAnonymous]
@@ -29,7 +29,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         public PartialViewResult authorPopularBlogs(int id) // Parametre olarak girilen id, bloğun id'sidir.
         {
             // Bu metot ile blog içerisinde sağ tarafta yazar bilgisini görüntülemekteyiz.
-            var blogAuthorId = blogManager.getAll().Where(x => x.id == id).Select(y => y.authorId).FirstOrDefault();
+            var blogAuthorId = blogManager.getList().Where(x => x.id == id).Select(y => y.authorId).FirstOrDefault();
             var authorBlogs = blogManager.getBlogByAuthor(blogAuthorId);
             return PartialView(authorBlogs);
         }
@@ -51,12 +51,13 @@ namespace yasinramazangokWebSiteProject.Controllers
         [HttpPost]
         public ActionResult addNewAuthor(Author p)
         {
-            AuthorValidator categoryValidator = new AuthorValidator();
-            ValidationResult results = categoryValidator.Validate(p);
+            // Validator kullanımı
+            AuthorValidator authorValidator = new AuthorValidator();
+            ValidationResult results = authorValidator.Validate(p);
             if (results.IsValid)
             {
 
-                authorManager.authorAdd(p);
+                authorManager.TAdd(p);
                 return RedirectToAction("authorList");
             }
             else
@@ -79,11 +80,11 @@ namespace yasinramazangokWebSiteProject.Controllers
         [HttpPost]
         public ActionResult authorEdit(Author p)
         {
-            AuthorValidator categoryValidator = new AuthorValidator();
-            ValidationResult results = categoryValidator.Validate(p);
+            AuthorValidator authorValidator = new AuthorValidator();
+            ValidationResult results = authorValidator.Validate(p);
             if (results.IsValid)
             {
-                authorManager.updateAuthor(p);
+                authorManager.updateT(p);
                 return RedirectToAction("authorList");
             }
             else

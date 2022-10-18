@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace yasinramazangokWebSiteProject.Controllers
     public class UserController : Controller
     {
         UserProfileManager userProfile = new UserProfileManager();
-        BlogManager blogManager = new BlogManager();
+        BlogManager blogManager = new BlogManager(new EfBlogDal());
         // GET: User
         public ActionResult Index()
         { 
@@ -49,7 +50,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult updateBlogAdmin(int id)
         {
             // Blogların güncelleme işlemi bu metot ile yapılmaktadır.
-            Blog blog = blogManager.findBlog(id);
+            Blog blog = blogManager.getById(id);
 
             Context c = new Context();
             List<SelectListItem> values = (from x in c.CATEGORIES.ToList()
@@ -72,7 +73,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         [HttpPost]
         public ActionResult updateBlogAdmin(Blog p)
         {
-            blogManager.updateBlog(p);
+            blogManager.updateT(p);
             return RedirectToAction("authorBlogList");
         }
 
@@ -100,7 +101,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         [HttpPost]
         public ActionResult addNewBlogAdmin(Blog b)
         {
-            blogManager.blogAddBL(b);
+            blogManager.TAdd(b);
             return RedirectToAction("authorBlogList");
             // adminBlogList, admin panelinin index sayfası olduğu için o sayfaya yönlendiriyoruz.
         }

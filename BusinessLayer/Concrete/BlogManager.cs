@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class BlogManager
+    public class BlogManager:IBlogService
     {
-        Repository<Blog> repoBlog = new Repository<Blog>();
-
-        public List<Blog> getAll()
+        IBlogDal _blogDal;
+        // Manager sınıfları sadece metotların çağırıldığı sınıflar olursa SOLID'e uygun olur.
+        public BlogManager(IBlogDal blogDal)
         {
-            return repoBlog.list(); // Repository'deki metotları çağırabiliyoruz.
+            _blogDal = blogDal;
         }
 
         /*
@@ -32,52 +34,44 @@ namespace BusinessLayer.Concrete
         public List<Blog> getBlogById(int id)
         {
             // Expression Delegate ile yazılabilen Generic ve dinamik yapıya bu kullanım örnektir.
-            return repoBlog.list(x => x.id == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
+            return _blogDal.list(x => x.id == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
         }
 
         public List<Blog> getBlogByAuthor(int id)
         {
             // Expression Delegate ile yazılabilen Generic ve dinamik yapıya bu kullanım örnektir.
-            return repoBlog.list(x => x.authorId == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
+            return _blogDal.list(x => x.authorId == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
         }
 
         public List<Blog> getBlogByCategory(int id)
         {
             // Expression Delegate ile yazılabilen Generic ve dinamik yapıya bu kullanım örnektir.
-            return repoBlog.list(x => x.categoryId == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
+            return _blogDal.list(x => x.categoryId == id); // Yani burada mesela EntityFramework'ün ToList() metodunu kullanmaya gerek kalmadı ve SOLID'e uygun bir mimari inşa ettik.
         }
 
-        public void blogAddBL(Blog p)
+        public List<Blog> getList()
         {
-            //if (p.title == "" || p.image == "" || p.title.Length <= 5 || p.content.Length <= 100)
-            //{
-            //    return -1;
-            //}
-            repoBlog.insert(p);
+            return _blogDal.list();
         }
 
-        public void deleteBlogBL(int p)
+        public Blog getById(int id)
         {
-            // id'ye göre ilgili bloğu silen metot burasıdır.   
-            Blog blog = repoBlog.find(x => x.id == p);
-           repoBlog.delete(blog);
+            return _blogDal.getById(id);
         }
 
-        public Blog findBlog(int id)
+        public void TAdd(Blog t)
         {
-            return repoBlog.find(x => x.id == id);
+            _blogDal.insert(t);
         }
 
-        public void updateBlog(Blog p)
+        public void updateT(Blog t)
         {
-            Blog blog = repoBlog.find(x => x.id == p.id);
-            blog.title = p.title;   
-            blog.date = p.date;
-            blog.authorId = p.authorId;
-            blog.content = p.content;
-            blog.categoryId = p.categoryId;
-            blog.image = p.image;
-            repoBlog.update(blog);
+            _blogDal.update(t);
+        }
+
+        public void deleteT(Blog t)
+        {
+            _blogDal.delete(t);
         }
     }
 }

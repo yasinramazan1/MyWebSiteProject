@@ -13,19 +13,18 @@ namespace yasinramazangokWebSiteProject.Controllers
     public class AboutController : Controller
     {
         // GET: About
-        AboutManager aboutManager = new AboutManager();
+        AboutManager aboutManager = new AboutManager(new EfAboutDal());
         public ActionResult Index()
         {
             // Bu metot ile ana sayfadaki üst menüden ve footer'dan tıklandığında HAKKIMIZDA sayfasının görüntülenmesi sağlanmaktadır!!!
-            var aboutContent = aboutManager.getAll();
+            var aboutContent = aboutManager.getList();
             return View(aboutContent);
         }
 
         public PartialViewResult footer()
         {
             // Footer'ın partial'ı burasıdır.
-            AboutManager aboutManager = new AboutManager();
-            var aboutContent1 = aboutManager.getAll();
+            var aboutContent1 = aboutManager.getList();
             return PartialView(aboutContent1);
         }
 
@@ -42,14 +41,14 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult updateAboutList()
         {
             // Hakkımızda sayfasının admin panelinde güncellenme işlemleri bu metot ile sağlanmaktadır. Yani hakkımızda sayfası yüklendiğin verileri getiren metot budur.
-            var aboutList = aboutManager.getAll();
+            var aboutList = aboutManager.getList();
             return View(aboutList);
         }
 
         [HttpPost]
         public ActionResult updateAbout(About p)
         {
-            aboutManager.updateAboutBM(p);
+            aboutManager.updateT(p);
             return RedirectToAction("updateAboutList");
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace yasinramazangokWebSiteProject.Controllers
     public class CommentController : Controller
     {
         // GET: Comment
-        CommentManager commentManager = new CommentManager();
+        CommentManager commentManager = new CommentManager(new EfCommentDal());
 
         [AllowAnonymous]
         public PartialViewResult blogCommentList(int id)
@@ -37,7 +38,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         {
             // Bu metot ile bir bloğa yorum yapabiliyoruz.
             c.status = true; // Bir yorum yapıldığında otomatik olarak veri tabanına true kaydedilmesi ve anında blogların altında görülmesi için bu tanım yapıldı.
-            commentManager.commentAdd(c);
+            commentManager.TAdd(c);
             return RedirectToAction("blogCommentList");
         }
 

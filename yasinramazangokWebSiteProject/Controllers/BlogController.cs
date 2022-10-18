@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using PagedList;
 using PagedList.Mvc;
@@ -17,7 +18,9 @@ namespace yasinramazangokWebSiteProject.Controllers
         // GET: Blog
         // ViewBag komutu controller'dan view'lara bir değer taşınmak istendiği zaman kullanılan C#-MVC komutudur.
 
-        BlogManager blogManager = new BlogManager();
+        CommentManager categoryManager = new CommentManager(new EfCommentDal());
+
+        BlogManager blogManager = new BlogManager(new EfBlogDal());
 
         [AllowAnonymous]
         public ActionResult Index()
@@ -32,7 +35,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             // Blogların ana sayfada listelendiği ana partial burasıdır.
             // Manager sınıflarında tanımlanan metotlar buradaki metotlar içerisinde çağırılabilir.
             // PagedList ve PagedList.Mvc kütüphaneleri listeleme işlemine yardımcı olan kütüphanelerdir.
-            var blogList = blogManager.getAll().ToPagedList(page, 6); // Toplam veriyi ikinci parametreye böler ve sayfalar oluşur ve ilk parametre kaçıncı sayfadan başlayacağını bildirir. İkinci parametre ise bir sayfada kaç tane veri listeleneceğini bildirir.
+            var blogList = blogManager.getList().ToPagedList(page, 6); // Toplam veriyi ikinci parametreye böler ve sayfalar oluşur ve ilk parametre kaçıncı sayfadan başlayacağını bildirir. İkinci parametre ise bir sayfada kaç tane veri listeleneceğini bildirir.
             return PartialView(blogList);
         }
 
@@ -41,50 +44,50 @@ namespace yasinramazangokWebSiteProject.Controllers
         {
             // Ana sayfada üstte öne çıkan blogların listelendiği partial burasıdır.           
             // Öne Çıkan Bloglarda 1. Blog
-            var blogTitle1 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.title).FirstOrDefault(); // Bu tanımlama kategori id'si 1 olan blog title'lar içerisindeki ilk bloğun başlığını getirir.
-            var blogImage1 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.image).FirstOrDefault();
-            var blogDate1 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.date).FirstOrDefault();
-            var blogId1 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.id).FirstOrDefault();
+            var blogTitle1 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.title).FirstOrDefault(); // Bu tanımlama kategori id'si 1 olan blog title'lar içerisindeki ilk bloğun başlığını getirir.
+            var blogImage1 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.image).FirstOrDefault();
+            var blogDate1 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.date).FirstOrDefault();
+            var blogId1 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 1).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle1 = blogTitle1; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage1 = blogImage1;
             ViewBag.blogDate1 = blogDate1;
             ViewBag.blogId1 = blogId1; // Bu viewbag ana sayfada link görevi görmektedir! 
 
             // Öne Çıkan Bloglarda 2. Blog
-            var blogTitle2 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.title).FirstOrDefault();
-            var blogImage2 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.image).FirstOrDefault();
-            var blogDate2 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.date).FirstOrDefault();
-            var blogId2 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.id).FirstOrDefault();
+            var blogTitle2 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.title).FirstOrDefault();
+            var blogImage2 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.image).FirstOrDefault();
+            var blogDate2 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.date).FirstOrDefault();
+            var blogId2 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 2).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle2 = blogTitle2; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage2 = blogImage2;
             ViewBag.blogDate2 = blogDate2;
             ViewBag.blogId2 = blogId2;
 
             // Öne Çıkan Bloglarda 3. Blog
-            var blogTitle3 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.title).FirstOrDefault();
-            var blogImage3 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.image).FirstOrDefault();
-            var blogDate3 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.date).FirstOrDefault();
-            var blogId3 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.id).FirstOrDefault();
+            var blogTitle3 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.title).FirstOrDefault();
+            var blogImage3 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.image).FirstOrDefault();
+            var blogDate3 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.date).FirstOrDefault();
+            var blogId3 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 3).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle3 = blogTitle3; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage3 = blogImage3;
             ViewBag.blogDate3 = blogDate3;
             ViewBag.blogId3 = blogId3;
 
             // Öne Çıkan Bloglarda 2. Blog
-            var blogTitle4 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.title).FirstOrDefault();
-            var blogImage4 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.image).FirstOrDefault();
-            var blogDate4 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.date).FirstOrDefault();
-            var blogId4 = blogManager.getAll().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.id).FirstOrDefault();
+            var blogTitle4 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.title).FirstOrDefault();
+            var blogImage4 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.image).FirstOrDefault();
+            var blogDate4 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.date).FirstOrDefault();
+            var blogId4 = blogManager.getList().OrderByDescending(z => z.id).Where(x => x.category.id == 4).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle4 = blogTitle4; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage4 = blogImage4;
             ViewBag.blogDate4 = blogDate4;
             ViewBag.blogId4 = blogId4;
 
             // Öne Çıkan Bloglarda Ortadaki Büyük Blog
-            var blogTitle5 = blogManager.getAll().Where(x => x.category.id == 1).Select(y => y.title).FirstOrDefault();
-            var blogImage5 = blogManager.getAll().Where(x => x.category.id == 1).Select(y => y.image).FirstOrDefault();
-            var blogDate5 = blogManager.getAll().Where(x => x.category.id == 1).Select(y => y.date).FirstOrDefault();
-            var blogId5 = blogManager.getAll().Where(x => x.category.id == 1).Select(y => y.id).FirstOrDefault();
+            var blogTitle5 = blogManager.getList().Where(x => x.category.id == 1).Select(y => y.title).FirstOrDefault();
+            var blogImage5 = blogManager.getList().Where(x => x.category.id == 1).Select(y => y.image).FirstOrDefault();
+            var blogDate5 = blogManager.getList().Where(x => x.category.id == 1).Select(y => y.date).FirstOrDefault();
+            var blogId5 = blogManager.getList().Where(x => x.category.id == 1).Select(y => y.id).FirstOrDefault();
             ViewBag.blogTitle5 = blogTitle5; // ViewBag.'dan sonra bir değişkene isim verir gibi viewbag'e isim veririz. 
             ViewBag.blogImage5 = blogImage5;
             ViewBag.blogDate5 = blogDate5;
@@ -143,14 +146,14 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult adminBlogList()
         {
             // Bu metot ile admin panelinde bloglar listelenebiliyor.
-            var blogList = blogManager.getAll();
+            var blogList = blogManager.getList();
             return View(blogList);
         }
 
         public ActionResult adminBlogList2()
         {
             // Bu metot ile admin panelinde bloglar listelenebiliyor.
-            var blogList = blogManager.getAll();
+            var blogList = blogManager.getList();
             return View(blogList);
         }
 
@@ -180,7 +183,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         [HttpPost]
         public ActionResult addNewBlog(Blog b)
         {
-            blogManager.blogAddBL(b);
+            blogManager.TAdd(b);
             return RedirectToAction("adminBlogList");
             // adminBlogList, admin panelinin index sayfası olduğu için o sayfaya yönlendiriyoruz.
         }
@@ -189,7 +192,8 @@ namespace yasinramazangokWebSiteProject.Controllers
         {
             // id'ye göre bloğu silme
             // Bu metodun bir partial'ı yoktur çünkü zaten silinme işlemi yapıldığında yine blog listesi görüntülenecektir. O yüzden aşağıda da "adminBlogList"e yönlendirdik.
-            blogManager.deleteBlogBL(id);
+            Blog blog = blogManager.getById(id);
+            blogManager.deleteT(blog);
             return RedirectToAction("adminBlogList"); // adminBlogList'e gitmesinin sebebi adminBlogList'in admin panelinin ana indexi görevini görüyor olmasıdır.
         }
 
@@ -197,7 +201,7 @@ namespace yasinramazangokWebSiteProject.Controllers
         public ActionResult updateBlog(int id)
         {
             // Blogların güncelleme işlemi bu metot ile yapılmaktadır.
-            Blog blog = blogManager.findBlog(id);
+            Blog blog = blogManager.getById(id);
 
             Context c = new Context();
             List<SelectListItem> values = (from x in c.CATEGORIES.ToList()
@@ -220,14 +224,14 @@ namespace yasinramazangokWebSiteProject.Controllers
         [HttpPost]
         public ActionResult updateBlog(Blog p)
         {
-            blogManager.updateBlog(p);
+            blogManager.updateT(p);
             return RedirectToAction("adminBlogList");
         }
 
          public ActionResult getCommentByBlog(int id)
         {
             // Bloğa göre yorum getirme işlemi bu metot ile sağlanmaktadır.
-            CommentManager categoryManager = new CommentManager();    
+               
             var commentList = categoryManager.commentByBlog(id);
             return View(commentList);
         }

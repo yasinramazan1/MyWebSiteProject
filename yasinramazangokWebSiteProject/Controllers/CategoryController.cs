@@ -21,14 +21,14 @@ namespace yasinramazangokWebSiteProject.Controllers
         public PartialViewResult categoryListInBlogDetails()
         {
             // Herhangi bir blogtaki sağ tarafta kategorilerin listelenmesi bu metot ile sağlanmaktadır.
-            var categoryValues = categoryManager.getAll();
+            var categoryValues = categoryManager.getList();
             return PartialView(categoryValues);
         }
 
         public ActionResult adminCategoryList()
         {
             // Admin panelinde kategorilerin listelenmesi ve görüntülenmesi
-            var categoryList = categoryManager.getAll();
+            var categoryList = categoryManager.getList();
             return View(categoryList);
         }
 
@@ -47,7 +47,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             ValidationResult results = categoryValidator.Validate(p);
             if (results.IsValid)
             {
-                categoryManager.categoryAdd(p);
+                categoryManager.TAdd(p);
                 return RedirectToAction("adminCategoryList");
             }
             else
@@ -77,7 +77,7 @@ namespace yasinramazangokWebSiteProject.Controllers
             ValidationResult results = categoryValidator.Validate(p);
             if (results.IsValid)
             {
-                categoryManager.updateCategory(p);
+                categoryManager.updateT(p);
                 return RedirectToAction("adminCategoryList");
             }
             else
